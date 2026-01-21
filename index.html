@@ -3,38 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>BA spine viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
     <link rel="icon" href="favicon.ico">
     <style>
-        body { background: #1a1a1a; color: #eee; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
-        .controls { margin: 20px; padding: 15px; background: #333; border-radius: 8px; display: flex; align-items: center; gap: 10px; }
-        #player-container { width: 1680px; height: 1080px; margin: 0 auto; border: 2px solid #444; border-radius: 10px; overflow: hidden; }
-        
-        .search-container { position: relative; width: 250px; }
+        body { background: #1a1a1a; color: #eee; font-family: sans-serif; margin: 0; overflow: hidden; display: flex; }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100vh;
+            background: #252525;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 60px 20px 20px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #sidebar.open { left: 0; }
+
+        #menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        #player-container { 
+            width: 100vw;
+            height: 100vh; 
+            background-color: #000;
+        }
+
+        #player-container canvas {
+            width: 200% !important;
+            height: 200% !important;
+            transform: scale(0.5);
+            transform-origin: top left;
+        }
+
+        .search-container { position: relative; width: 100%; }
         #charSearch { 
-            width: 100%; padding: 10px; border-radius: 4px; background: #555; 
+            width: 100%; padding: 12px; border-radius: 4px; background: #444; 
             color: white; border: 1px solid #666; outline: none; box-sizing: border-box;
         }
         .options-list { 
-            position: absolute; top: 45px; left: 0; width: 100%; max-height: 400px; 
-            background: #444; border: 1px solid #666; border-radius: 4px; 
-            overflow-y: auto; z-index: 100; display: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: absolute; top: 50px; left: 0; width: 100%; max-height: 400px; 
+            background: #333; border: 1px solid #555; border-radius: 4px; 
+            overflow-y: auto; z-index: 1100; display: none;
         }
         .options-list.show { display: block; }
-        .option-item { 
-            padding: 10px; cursor: pointer; border-bottom: 1px solid #555; font-size: 14px; 
-        }
+        .option-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #444; font-size: 14px; }
         .option-item:hover { background: #2b6cb0; }
         .option-item.hidden { display: none; }
 
-        button { padding: 8px 15px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; }
-        button:hover { background: #666; }
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
+        button.action-btn:hover { background: #666; }
         #record-btn { background-color: #e74c3c; }
     </style>
 </head>
 <body>
-    <div class="controls">
+
+    <button id="menu-toggle" onclick="toggleSidebar()">☰ 메뉴 열기</button>
+    <div id="sidebar">
         <label>캐릭터 검색: </label>
 
         <div class="search-container">
@@ -643,8 +689,12 @@
             </div>
         </div>
 
-        <button onclick="takeScreenshot()">이미지 다운로드</button>
-        <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c;">녹화</button>
+        <button onclick="toggleFullscreen()" style="height: 35px; font-size: 15px">
+            전체화면
+        </button>
+
+        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
+        <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c; height: 35px; font-size: 15px">녹화</button>
     </div>
 
     <div id="player-container"></div>
@@ -654,6 +704,32 @@
     <script>
         let player = null;
         let selectedCharacter = "CH0222_spr";
+
+        function toggleFullscreen() {
+            const container = document.getElementById('player-container');
+
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+                }
+            }
+            }
+
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('menu-toggle');
+            sidebar.classList.toggle('open');
+            toggleBtn.innerText = sidebar.classList.contains('open') ? "✕ 닫기" : "☰ 메뉴 열기";
+        }
 
         const searchInput = document.getElementById('charSearch');
         const optionsList = document.getElementById('options-list');
@@ -767,6 +843,7 @@
             
             const width = canvas.width;
             const height = canvas.height;
+            
             const pixels = new Uint8Array(width * height * 4);
             
             gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
@@ -848,5 +925,4 @@
         window.onload = loadSpine;
     </script>
 </body>
-
 </html>
