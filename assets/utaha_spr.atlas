@@ -1,0 +1,33 @@
+utaha_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+01_normal
+	bounds: 176, 1211, 172, 170
+02_respond
+	bounds: 2, 1245, 172, 171
+03_smile
+	bounds: 1153, 1135, 172, 168
+04_embarrass
+	bounds: 2, 1043, 172, 166
+05_serious
+	bounds: 350, 1081, 168, 171
+06_depressed
+	bounds: 344, 918, 156, 161
+07_suprise
+	bounds: 2, 1418, 172, 178
+eyeclose
+	bounds: 176, 1039, 166, 170
+fronthair
+	bounds: 1021, 997, 213, 165
+halo
+	bounds: 1517, 1775, 520, 265
+utaha1
+	bounds: 2, 883, 1626, 1157
+utaha2
+	bounds: 2, 260, 1387, 622
+	offsets: 237, 687, 1624, 1309
+	rotate: 180
+utaha3
+	bounds: 1327, 422, 1304, 713
+	offsets: 0, 0, 1624, 1309
+	rotate: 270

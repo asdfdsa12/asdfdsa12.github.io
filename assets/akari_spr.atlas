@@ -1,0 +1,42 @@
+akari_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+	scale: 0.9
+00_defualt
+	bounds: 2, 1069, 230, 156
+	offsets: 9, 9, 248, 174
+02_respond
+	bounds: 2, 1069, 230, 156
+	offsets: 9, 9, 248, 174
+01_normal
+	bounds: 1490, 1453, 248, 174
+03_smile
+	bounds: 2, 1385, 230, 171
+	offsets: 9, 9, 248, 189
+04_embarrassed
+	bounds: 1467, 1288, 230, 163
+	offsets: 9, 9, 248, 181
+05_serious
+	bounds: 1699, 1174, 230, 156
+	offsets: 9, 9, 248, 174
+06
+	bounds: 1816, 1332, 230, 166
+	offsets: 9, 9, 248, 184
+06_drop shadow
+	bounds: 1211, 1901, 191, 145
+	offsets: 9, 14, 209, 168
+akari
+	bounds: 2, 890, 1319, 1156
+	offsets: 148, 1303, 1595, 2459
+akari_1
+	bounds: 438, 19, 1595, 1402
+	offsets: 0, 0, 1595, 2459
+eyeclose
+	bounds: 2, 1227, 230, 156
+	offsets: 9, 9, 248, 174
+front hair
+	bounds: 1735, 1499, 311, 277
+	offsets: 0, 2, 311, 282
+halo
+	bounds: 1289, 1623, 544, 423
+	offsets: 0, 0, 545, 426

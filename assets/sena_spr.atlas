@@ -1,0 +1,28 @@
+sena_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1700, 1821, 217, 149
+	rotate: 90
+01_normal
+	bounds: 2, 1516, 217, 140
+02_respond
+	bounds: 1700, 1536, 217, 141
+03_smile
+	bounds: 1058, 1482, 216, 140
+04_embarrassed
+	bounds: 1496, 1403, 218, 131
+05_serious
+	bounds: 1145, 1624, 217, 143
+06_depressed
+	bounds: 1276, 1421, 218, 131
+eyeclose
+	bounds: 1700, 1679, 224, 140
+halo
+	bounds: 1376, 1554, 484, 322
+	rotate: 90
+sena_1
+	bounds: 2, 736, 1373, 1302
+sena_2
+	bounds: 2, 2, 1180, 1143
+	rotate: 90

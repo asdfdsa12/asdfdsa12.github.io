@@ -1,0 +1,32 @@
+asuna_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_defalt
+	bounds: 1193, 940, 240, 157
+01_nomal
+	bounds: 743, 772, 240, 192
+02_respond
+	bounds: 951, 966, 240, 197
+03_smile
+	bounds: 1476, 1871, 240, 157
+04_embarrass
+	bounds: 177, 995, 239, 202
+05_serious
+	bounds: 244, 799, 240, 194
+06_shout
+	bounds: 2, 799, 240, 194
+asuna
+	bounds: 2, 953, 1473, 1075
+	offsets: 0, 1033, 1481, 2108
+asuna_1
+	bounds: 975, 547, 1481, 1053
+	offsets: 0, 0, 1481, 2108
+	rotate: 270
+eyeclose
+	bounds: 486, 780, 217, 172
+	offsets: 10, 10, 237, 192
+halo
+	bounds: 2, 1190, 341, 383
+object_fronthair
+	bounds: 2, 1670, 167, 155
+	offsets: 1, 2, 168, 157

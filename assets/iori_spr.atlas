@@ -1,0 +1,36 @@
+iori_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1263, 1031, 122, 116
+01_normal
+	bounds: 1263, 1031, 122, 116
+02_respond
+	bounds: 1387, 1091, 126, 118
+03_smile
+	bounds: 233, 1299, 128, 125
+04_embarassed
+	bounds: 1852, 1657, 180, 148
+05_serious
+	bounds: 1862, 1917, 125, 129
+06_depressed
+	bounds: 2, 1927, 151, 119
+07
+	bounds: 1501, 1229, 123, 126
+eyeclose
+	bounds: 1151, 970, 110, 116
+halo
+	bounds: 1082, 199, 332, 380
+iori
+	bounds: 2, 836, 1848, 1210
+	offsets: 0, 1115, 1848, 2325
+iori_1
+	bounds: 776, 40, 1527, 1270
+	offsets: 9, 0, 1848, 2325
+	rotate: 270
+iori_2
+	bounds: 1581, 1806, 442, 240
+	offsets: 1096, 2059, 1848, 2325
+iori_3
+	bounds: 2, 353, 738, 1127
+	offsets: 921, 0, 1848, 2325

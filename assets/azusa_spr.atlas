@@ -1,0 +1,34 @@
+azusa_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 2, 1320, 209, 148
+01_normal
+	bounds: 2, 1320, 209, 148
+02_respond
+	bounds: 1472, 1373, 209, 151
+03_smile
+	bounds: 2, 1470, 210, 152
+04_embarrass
+	bounds: 1450, 1231, 209, 140
+05_serious
+	bounds: 1683, 1314, 208, 146
+06_embarrassed
+	bounds: 2, 1184, 207, 134
+07_embarrass 2
+	bounds: 1661, 1174, 194, 138
+08_smile 2
+	bounds: 214, 1336, 198, 157
+Character Halo
+	bounds: 1556, 1727, 330, 319
+HairCover
+	bounds: 1043, 1128, 219, 97
+azusa_00
+	bounds: 317, 168, 1729, 1257
+azusa_01
+	bounds: 2, 1075, 1552, 971
+eyeclose
+	bounds: 213, 1186, 197, 148
+gas mask
+	bounds: 1675, 1462, 290, 271
+	offsets: 14, 0, 304, 271

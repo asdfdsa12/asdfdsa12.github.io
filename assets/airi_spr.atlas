@@ -1,0 +1,33 @@
+airi_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+01_Normal
+	bounds: 2, 1041, 214, 196
+02_Respond
+	bounds: 1658, 1523, 214, 214
+03_Smile
+	bounds: 1667, 1312, 209, 209
+04_Embarrass
+	bounds: 1636, 1739, 290, 215
+	rotate: 90
+05_Serious
+	bounds: 773, 851, 214, 188
+06_Depressed
+	bounds: 2, 849, 214, 190
+07_Pero
+	bounds: 1636, 913, 212, 196
+airi
+	bounds: 2, 874, 1082, 1155
+	offsets: 0, 1011, 1082, 2166
+airi_1
+	bounds: 989, 997, 677, 1032
+	offsets: 81, 0, 1082, 2166
+default
+	bounds: 1655, 1111, 214, 199
+eyeclose
+	bounds: 1853, 1838, 191, 176
+	offsets: 10, 10, 211, 196
+	rotate: 90
+halo
+	bounds: 826, 1758, 323, 271
+	offsets: 0, 3, 326, 277

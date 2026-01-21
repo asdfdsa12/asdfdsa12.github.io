@@ -1,0 +1,48 @@
+CH0088_spr.png
+size:1024,1024
+filter:Linear,Linear
+scale:0.5
+00_default
+bounds:881,357,115,101
+rotate:90
+01_blush 1
+bounds:339,988,83,24
+01_normal
+bounds:119,925,115,87
+02_respond
+bounds:2,889,115,103
+03_blush 2
+bounds:236,971,102,41
+offsets:0,0,102,42
+03_smile
+bounds:2,265,107,106
+04_embarrass
+bounds:111,177,116,93
+05_blush 3
+bounds:832,258,115,97
+05_serious
+bounds:2,994,79,18
+06_blush 4
+bounds:791,196,132,60
+06_embarrassed
+bounds:688,933,115,79
+07_blush 5
+bounds:895,474,120,98
+rotate:90
+CH0088
+bounds:2,2,892,1010
+offsets:1,0,893,1010
+Halo
+bounds:790,745,267,164
+rotate:90
+eyeclose
+bounds:2,373,115,101
+soot 1
+bounds:878,596,148,107
+rotate:90
+soot 2
+bounds:585,980,33,32
+soot 3
+bounds:620,982,29,30
+soot 4
+bounds:651,994,30,18

@@ -1,0 +1,6 @@
+NP0250_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.6
+NP0250
+	bounds: 2, 2, 861, 961

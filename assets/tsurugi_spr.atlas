@@ -1,0 +1,57 @@
+tsurugi_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+	scale: 0.86
+01_nomal
+	bounds: 1588, 757, 162, 179
+02_respond
+	bounds: 1232, 812, 162, 179
+03_smile
+	bounds: 226, 1704, 163, 218
+04_embrassed
+	bounds: 1480, 1116, 162, 190
+	rotate: 90
+05_serious
+	bounds: 836, 1626, 229, 204
+06_depressed
+	bounds: 895, 1424, 164, 200
+07
+	bounds: 1522, 1280, 166, 196
+08
+	bounds: 1529, 1478, 171, 204
+09
+	bounds: 1690, 1241, 164, 193
+10
+	bounds: 1067, 1563, 171, 204
+11
+	bounds: 1396, 744, 157, 184
+12
+	bounds: 1702, 1436, 169, 195
+	rotate: 90
+13
+	bounds: 1424, 930, 162, 184
+14
+	bounds: 1672, 938, 162, 184
+default
+	bounds: 1328, 1866, 172, 180
+eyeclose
+	bounds: 1884, 925, 162, 179
+fronthair
+	bounds: 1773, 1105, 222, 229
+	offsets: 1, 0, 224, 229
+	rotate: 270
+halo
+	bounds: 391, 1705, 290, 341
+halo_0
+	bounds: 1503, 1607, 430, 439
+	rotate: 180
+tsurugi
+	bounds: 2, 6, 1435, 868
+	offsets: 134, 1147, 1701, 2015
+tsurugi_1
+	bounds: 2, 875, 1519, 1171
+	offsets: 0, 0, 1701, 2015
+tsurugi_2
+	bounds: 609, 1607, 439, 991
+	offsets: 1262, 435, 1701, 2015
+	rotate: 270

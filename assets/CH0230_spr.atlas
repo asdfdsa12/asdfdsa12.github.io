@@ -1,0 +1,86 @@
+CH0230_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 2, 1039, 213, 144
+01_normal
+	bounds: 1868, 1170, 213, 144
+	rotate: 90
+02_respond
+	bounds: 1881, 1385, 213, 145
+	rotate: 90
+03_smile
+	bounds: 944, 671, 213, 138
+04_embarassed
+	bounds: 1552, 603, 214, 134
+05_serious
+	bounds: 1493, 428, 213, 131
+06_depressed
+	bounds: 1777, 881, 213, 141
+07
+	bounds: 1768, 604, 213, 133
+08
+	bounds: 1647, 739, 213, 140
+09
+	bounds: 1768, 471, 213, 131
+10
+	bounds: 1231, 1608, 214, 150
+11
+	bounds: 1240, 1315, 214, 145
+12
+	bounds: 1815, 1815, 211, 159
+	rotate: 90
+13
+	bounds: 619, 353, 213, 124
+14
+	bounds: 391, 927, 212, 143
+15
+	bounds: 1075, 1786, 212, 154
+16
+	bounds: 1803, 1024, 212, 144
+17
+	bounds: 1875, 1600, 213, 145
+	rotate: 90
+18
+	bounds: 1321, 1760, 219, 238
+	rotate: 90
+Body_Wing_L
+	bounds: 55, 343, 784, 798
+	offsets: 5, 291, 1942, 2248
+	rotate: 270
+Body_Wing_R
+	bounds: 757, 137, 811, 810
+	offsets: 1129, 256, 1942, 2248
+	rotate: 90
+CH0230
+	bounds: 602, 810, 577, 1043
+	offsets: 647, 1198, 1942, 2248
+	rotate: 90
+CH0230_2
+	bounds: 2, 1117, 851, 1237
+	offsets: 523, 0, 1942, 2248
+	rotate: 90
+Halo_01
+	bounds: 1438, 1498, 124, 108
+	offsets: 10, 10, 144, 128
+Halo_01_Light
+	bounds: 1447, 1616, 151, 142
+	offsets: 10, 10, 171, 162
+Halo_02
+	bounds: 1322, 1981, 338, 45
+	offsets: 10, 10, 358, 65
+Halo_02_Light
+	bounds: 950, 1942, 370, 84
+	offsets: 10, 10, 390, 104
+Halo_03
+	bounds: 576, 1735, 497, 205
+	offsets: 10, 10, 517, 225
+Halo_04
+	bounds: 2, 1970, 946, 56
+	offsets: 10, 10, 966, 76
+Halo_04_Light
+	bounds: 1569, 1001, 1025, 311
+	offsets: 5, 17, 1034, 330
+	rotate: 270
+eyeclose
+	bounds: 1220, 1462, 216, 144

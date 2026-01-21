@@ -1,0 +1,76 @@
+misaki_spr.png
+size:1024,1024
+filter:Linear,Linear
+scale:0.54
+00_default
+bounds:767,651,105,89
+02_respond
+bounds:767,651,105,89
+01_normal
+bounds:917,667,105,89
+03_smile
+bounds:521,684,105,89
+04_embarassed
+bounds:2,638,105,87
+05_serious
+bounds:2,115,105,80
+06_depressed
+bounds:109,114,105,80
+07_cry
+bounds:216,113,103,80
+07_smile 2
+bounds:737,141,102,85
+08_cry2
+bounds:321,112,101,80
+10_panic
+bounds:2,727,106,89
+10_panic_PL
+bounds:635,972,37,50
+10_panic_S
+bounds:275,1014,6,8
+11_endure 1_S
+bounds:275,1014,6,8
+12_endure 2_S
+bounds:275,1014,6,8
+11_endure 1
+bounds:557,577,107,85
+11_endure 1_SD
+bounds:604,129,131,106
+12_endure 2
+bounds:2,822,105,89
+rotate:90
+13_shout
+bounds:2,929,106,93
+13_shout_S1
+bounds:152,1013,8,9
+13_shout_s2
+bounds:283,1015,6,7
+14_shout
+bounds:897,931,104,91
+14_shout_p1
+bounds:136,1011,14,11
+14_shout_p2
+bounds:110,997,24,25
+eyeclose
+bounds:424,103,104,89
+flush
+bounds:408,974,84,48
+fronthair
+bounds:369,730,161,161
+halo
+bounds:711,817,184,205
+offsets:1,1,186,207
+mask_defualt
+bounds:764,743,215,181
+offsets:1,0,216,181
+rotate:180
+mask_full
+bounds:384,512,216,171
+rotate:90
+misaki
+bounds:2,192,601,830
+offsets:365,0,966,1356
+misaki_00
+bounds:457,56,966,562
+offsets:0,794,966,1356
+rotate:90

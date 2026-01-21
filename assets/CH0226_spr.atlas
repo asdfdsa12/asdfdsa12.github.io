@@ -1,0 +1,65 @@
+CH0226_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.55
+00_default
+	bounds: 358, 154, 115, 84
+02_respond
+	bounds: 358, 154, 115, 84
+01_normal
+	bounds: 727, 180, 115, 84
+03_smile
+	bounds: 809, 95, 115, 81
+04_embarassed
+	bounds: 907, 178, 115, 86
+05_serious
+	bounds: 117, 72, 113, 81
+06_depressed
+	bounds: 942, 793, 112, 79
+	rotate: 90
+07
+	bounds: 906, 543, 116, 86
+08
+	bounds: 241, 155, 115, 83
+09
+	bounds: 2, 97, 113, 82
+10
+	bounds: 944, 678, 113, 76
+	rotate: 90
+11
+	bounds: 119, 155, 113, 83
+12
+	bounds: 2, 181, 115, 86
+13
+	bounds: 234, 72, 113, 81
+14
+	bounds: 936, 428, 113, 80
+	rotate: 90
+15
+	bounds: 939, 907, 115, 79
+	rotate: 90
+16
+	bounds: 349, 41, 111, 79
+	rotate: 90
+17
+	bounds: 926, 63, 113, 78
+	rotate: 90
+18
+	bounds: 2, 838, 113, 116
+eye close
+	bounds: 2, 271, 102, 74
+	offsets: 6, 5, 113, 84
+	rotate: 90
+front hair
+	bounds: 815, 266, 137, 113
+	offsets: 3, 3, 143, 119
+halo
+	bounds: 458, 63, 349, 321
+	offsets: 0, 2, 349, 323
+	rotate: 180
+kokuriko
+	bounds: 461, 279, 482, 743
+	offsets: 15, 766, 503, 1509
+kokuriko_01
+	bounds: 2, 239, 502, 783
+	offsets: 0, 1, 503, 1509

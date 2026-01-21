@@ -1,0 +1,38 @@
+CH0141_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_eyeclose
+	bounds: 1353, 1379, 217, 206
+01_normal
+	bounds: 702, 1467, 217, 206
+02_respond
+	bounds: 1583, 1587, 217, 206
+03_smile
+	bounds: 1572, 1383, 214, 202
+04_embarrassed
+	bounds: 1788, 1376, 214, 200
+05_serious
+	bounds: 1364, 1587, 217, 206
+06_depressed
+	bounds: 701, 1282, 208, 183
+07_other
+	bounds: 1807, 1578, 219, 211
+	rotate: 90
+08_other
+	bounds: 1807, 1799, 219, 211
+	rotate: 90
+09_other
+	bounds: 1359, 1795, 223, 223
+10_other
+	bounds: 1584, 1795, 223, 221
+	rotate: 90
+CH0141
+	bounds: 2, 44, 1185, 1974
+	offsets: 0, 0, 1186, 1974
+Halo
+	bounds: 702, 1675, 377, 343
+default
+	bounds: 2, 1332, 216, 194
+fronthair
+	bounds: 1076, 1376, 287, 642
+	rotate: 180

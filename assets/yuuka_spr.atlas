@@ -1,0 +1,30 @@
+yuuka_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1638, 1504, 185, 163
+01_normal
+	bounds: 1638, 1504, 185, 163
+02_respond
+	bounds: 1523, 1750, 187, 164
+03_smile
+	bounds: 1825, 1349, 185, 154
+04_embarrassed
+	bounds: 1853, 1831, 192, 170
+	rotate: 90
+05_serious
+	bounds: 1712, 1669, 190, 160
+06_depressed
+	bounds: 1825, 1505, 185, 162
+07
+	bounds: 1811, 1032, 185, 150
+eyeclose
+	bounds: 1775, 1184, 174, 163
+halo
+	bounds: 1446, 1916, 405, 107
+yuuka
+	bounds: 2, 797, 1050, 1226
+	offsets: 0, 1193, 1050, 2419
+yuuka_1
+	bounds: 952, 826, 906, 1197
+	offsets: 144, 0, 1050, 2419

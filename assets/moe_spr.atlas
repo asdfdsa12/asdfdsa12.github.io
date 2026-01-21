@@ -1,0 +1,69 @@
+moe_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.6
+00_default
+	bounds: 62, 892, 130, 91
+	rotate: 90
+01_normal
+	bounds: 62, 892, 130, 91
+	rotate: 90
+02_respond
+	bounds: 557, 214, 130, 91
+03_smile
+	bounds: 265, 268, 124, 97
+04_embarassed
+	bounds: 133, 178, 130, 91
+05_serious
+	bounds: 2, 715, 131, 98
+06_depressed
+	bounds: 391, 217, 130, 91
+	rotate: 90
+07
+	bounds: 272, 367, 130, 96
+08
+	bounds: 2, 275, 130, 95
+09
+	bounds: 2, 372, 137, 93
+10
+	bounds: 777, 669, 137, 93
+11
+	bounds: 689, 147, 130, 91
+	rotate: 180
+12
+	bounds: 2, 178, 130, 91
+13
+	bounds: 881, 130, 128, 91
+14
+	bounds: 133, 271, 130, 95
+15
+	bounds: 609, 758, 131, 98
+16
+	bounds: 768, 764, 131, 98
+17
+	bounds: 140, 368, 130, 96
+18
+	bounds: 915, 732, 130, 91
+	rotate: 90
+eyeclose
+	bounds: 265, 138, 128, 91
+	rotate: 90
+glasses
+	bounds: 358, 130, 127, 86
+hair
+	bounds: 487, 139, 132, 73
+halo_1
+	bounds: 768, 864, 168, 158
+halo_2
+	bounds: 313, 940, 85, 82
+halo_light_01
+	bounds: 593, 858, 173, 164
+halo_light_02
+	bounds: 915, 642, 92, 89
+moe
+	bounds: 478, 205, 486, 544
+	offsets: 0, 529, 724, 1073
+	rotate: 90
+moe_2
+	bounds: 2, 464, 648, 558
+	offsets: 76, 0, 724, 1073

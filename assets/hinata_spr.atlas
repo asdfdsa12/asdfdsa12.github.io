@@ -1,0 +1,33 @@
+hinata_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1791, 1488, 222, 179
+01_normal
+	bounds: 1791, 1669, 231, 184
+02_respond
+	bounds: 1791, 1855, 231, 191
+03_smile
+	bounds: 1791, 1308, 219, 178
+04_embarrassed
+	bounds: 2, 1175, 222, 164
+05_serious
+	bounds: 1791, 1145, 219, 161
+06_depressed
+	bounds: 1303, 1887, 197, 159
+eyeclose
+	bounds: 1251, 1504, 220, 184
+halo
+	bounds: 1710, 526, 558, 336
+	offsets: 0, 0, 558, 337
+	rotate: 90
+hinata
+	bounds: 2, 870, 1300, 1176
+	offsets: 280, 1172, 1580, 2348
+hinata_1
+	bounds: 1150, 507, 1539, 640
+	offsets: 28, 549, 1580, 2348
+	rotate: 270
+hinata_2
+	bounds: 20, 600, 1024, 565
+	offsets: 0, 0, 1580, 2348

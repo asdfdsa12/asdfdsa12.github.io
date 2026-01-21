@@ -1,0 +1,56 @@
+CH0242_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.6
+00_default
+	bounds: 148, 256, 144, 121
+00_eye close
+	bounds: 883, 221, 139, 121
+01_normal
+	bounds: 315, 296, 145, 121
+02_respond
+	bounds: 901, 347, 145, 121
+	rotate: 90
+03_smile
+	bounds: 608, 180, 145, 115
+	rotate: 90
+04_embarassed
+	bounds: 479, 653, 145, 121
+05_serious
+	bounds: 480, 776, 145, 121
+06_depressed
+	bounds: 441, 148, 145, 109
+07_serious_2
+	bounds: 462, 259, 144, 121
+08_smile_2
+	bounds: 861, 901, 145, 121
+09_think
+	bounds: 866, 106, 139, 109
+10_respond_2
+	bounds: 725, 106, 139, 109
+11_respond_03
+	bounds: 2, 145, 144, 109
+12_respond_4
+	bounds: 294, 185, 145, 109
+13_eyeclose_2
+	bounds: 148, 145, 139, 109
+14_shame
+	bounds: 289, 86, 134, 97
+15_surprise
+	bounds: 736, 217, 145, 115
+16_serious_3
+	bounds: 714, 901, 145, 121
+17_serious_4
+	bounds: 2, 280, 144, 121
+CH0242_hikar2
+	bounds: 2, 379, 481, 643
+	offsets: 50, 514, 547, 1157
+CH0242_hikari
+	bounds: 475, 326, 547, 560
+	offsets: 0, 0, 547, 1157
+fronthair
+	bounds: 570, 45, 173, 110
+halo
+	bounds: 369, 898, 343, 124
+hat_cover
+	bounds: 555, 978, 143, 44

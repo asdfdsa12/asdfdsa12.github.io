@@ -1,0 +1,100 @@
+CH0258_spr.png
+size:2048,1024
+filter:Linear,Linear
+scale:0.58
+00_deuflat
+bounds:688,299,115,81
+01_normal
+bounds:688,299,115,81
+02_respond
+bounds:1802,488,115,85
+03_smile
+bounds:1425,580,115,89
+04_embarassed
+bounds:2,374,114,82
+05_serious
+bounds:570,236,116,77
+06_depressed
+bounds:1919,489,115,84
+07_normal 2
+bounds:1671,404,115,82
+08_eyeclose 2
+bounds:1554,405,115,82
+09_sarcastic
+bounds:1155,580,115,89
+10_think
+bounds:2,292,115,80
+11_damaged
+bounds:1685,488,115,85
+12_fury shout 1
+bounds:1568,574,115,96
+13_fury shout 2
+bounds:1308,574,115,96
+14_shout
+bounds:1308,672,114,97
+15_irritate 1
+bounds:1527,489,116,83
+16_irritate 2
+bounds:1685,575,113,95
+17_embarassed 2
+bounds:1788,404,114,82
+18_embarassed 3
+bounds:1438,671,128,99
+19_shout 2
+bounds:1308,771,128,102
+20_surprised 1
+bounds:1568,672,114,98
+21_surprised 2
+bounds:1919,409,115,78
+22_surprised 3
+bounds:1178,771,128,102
+23_pure smile 1
+bounds:1698,672,128,100
+24_pure smile 2
+bounds:1568,772,128,100
+25_smile 2
+bounds:1202,875,128,105
+26_calm smile
+bounds:1828,673,128,99
+27_peaceful
+bounds:1589,877,128,103
+28_yawn
+bounds:1462,874,125,106
+29_shy 1
+bounds:1849,774,128,102
+30_shy 2
+bounds:1332,876,128,104
+31_shy 3
+bounds:1719,774,128,102
+32_cry 1
+bounds:1828,575,128,96
+33_cry 2
+bounds:1178,671,128,98
+34_cry 3
+bounds:812,870,128,110
+35_difficult 1
+bounds:1849,878,128,102
+36_difficult 2
+bounds:1719,878,128,102
+37_difficult 3
+bounds:1438,772,128,100
+38_trick 1
+bounds:1072,875,128,105
+39_trick 2
+bounds:942,874,128,106
+CH0258(defualt)
+bounds:2,227,753,1175
+rotate:90
+NP0198
+bounds:871,2,556,1175
+rotate:90
+eyeclose
+bounds:805,370,115,81
+fronthair
+bounds:647,849,163,131
+halo 1
+bounds:2,845,269,135
+halo 2
+bounds:119,229,117,89
+halo 3
+bounds:215,914,85,66

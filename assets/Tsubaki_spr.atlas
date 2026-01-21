@@ -1,0 +1,47 @@
+Tsubaki_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_defalt
+	bounds: 2, 498, 210, 168
+	offsets: 10, 10, 230, 188
+01_nomal
+	bounds: 2, 1854, 230, 192
+02_respond
+	bounds: 1756, 614, 210, 171
+	offsets: 10, 10, 230, 191
+03_smile
+	bounds: 214, 668, 210, 171
+	offsets: 10, 10, 230, 191
+04_embarrass
+	bounds: 234, 1875, 241, 171
+	offsets: 10, 10, 261, 191
+05_serious
+	bounds: 2, 700, 210, 171
+	offsets: 10, 10, 230, 191
+06_serious
+	bounds: 1739, 1377, 210, 175
+	offsets: 10, 10, 230, 195
+07
+	bounds: 496, 757, 181, 164
+	offsets: 10, 10, 201, 184
+08
+	bounds: 1340, 504, 179, 165
+	offsets: 10, 10, 199, 185
+09
+	bounds: 214, 505, 180, 161
+	offsets: 10, 10, 200, 181
+10
+	bounds: 1810, 1554, 236, 165
+	offsets: 10, 10, 256, 185
+eyeclose
+	bounds: 1834, 1204, 210, 171
+	offsets: 10, 10, 230, 191
+halo
+	bounds: 1541, 1623, 355, 423
+	offsets: 1, 0, 359, 423
+tsubaki
+	bounds: 563, 306, 1483, 1269
+	offsets: 213, 666, 1696, 1935
+tsubaki_1
+	bounds: 2, 840, 1551, 1206
+	offsets: 0, 0, 1696, 1935

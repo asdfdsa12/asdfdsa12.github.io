@@ -1,0 +1,17 @@
+NP0266_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.68
+NP0236
+	bounds: 2, 295, 520, 727
+	offsets: 39, 567, 649, 1294
+NP0236_01
+	bounds: 374, 222, 648, 584
+	offsets: 0, 0, 649, 1294
+halo_01
+	bounds: 452, 872, 177, 150
+	offsets: 0, 3, 177, 154
+halo_02
+	bounds: 2, 79, 260, 242
+	offsets: 0, 0, 261, 242
+	rotate: 270

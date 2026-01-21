@@ -1,0 +1,53 @@
+CH0098_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+01_normal
+	bounds: 1442, 1563, 177, 161
+02_respond
+	bounds: 1433, 1264, 156, 135
+	offsets: 10, 10, 176, 155
+03_smile
+	bounds: 1880, 1393, 151, 143
+	offsets: 10, 10, 171, 163
+04_embarassed
+	bounds: 678, 1438, 207, 134
+	offsets: 10, 10, 227, 154
+05_serious
+	bounds: 1912, 1907, 131, 136
+	offsets: 10, 10, 151, 156
+06_depressed
+	bounds: 887, 1421, 139, 143
+	offsets: 10, 10, 159, 163
+07
+	bounds: 867, 1577, 130, 132
+	offsets: 10, 10, 150, 152
+08
+	bounds: 658, 1574, 207, 135
+	offsets: 10, 10, 227, 155
+CH0098
+	bounds: 2, 103, 703, 1940
+	offsets: 772, 723, 1934, 2669
+CH0098_1
+	bounds: 683, 110, 1933, 791
+	offsets: 1, 0, 1934, 2669
+	rotate: 270
+default
+	bounds: 1881, 1538, 157, 141
+	offsets: 10, 10, 177, 161
+eyeclose
+	bounds: 1608, 1369, 152, 141
+	offsets: 10, 10, 172, 161
+hair_cover
+	bounds: 1714, 1681, 226, 362
+	rotate: 180
+halo_01
+	bounds: 1366, 1726, 354, 317
+	offsets: 0, 0, 356, 317
+halo_02
+	bounds: 1622, 1512, 258, 235
+	offsets: 3, 0, 264, 235
+halo_03
+	bounds: 1420, 1401, 186, 160
+	rotate: 180
+halo_04
+	bounds: 616, 1711, 368, 332

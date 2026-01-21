@@ -1,0 +1,37 @@
+izumi_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1565, 1215, 202, 178
+01_eyeclose
+	bounds: 909, 1837, 192, 209
+02_nomal
+	bounds: 464, 1837, 201, 209
+03_respond
+	bounds: 1488, 1642, 198, 193
+04_smile
+	bounds: 1152, 1440, 177, 179
+05_embarrass
+	bounds: 2, 700, 187, 191
+	offsets: 0, 0, 187, 268
+06_serious
+	bounds: 1689, 1653, 199, 206
+07_depressed
+	bounds: 464, 1629, 194, 206
+08_
+	bounds: 1488, 1837, 199, 209
+09_
+	bounds: 1574, 1449, 194, 191
+10
+	bounds: 1689, 1861, 223, 185
+halo
+	bounds: 1108, 1621, 378, 425
+izumi
+	bounds: 893, 46, 1455, 1153
+	offsets: 0, 1110, 1861, 2263
+	rotate: 90
+izumi_1
+	bounds: 2, 886, 1571, 1160
+	offsets: 290, 0, 1861, 2263
+object_fronthair
+	bounds: 2, 1803, 260, 243

@@ -1,0 +1,61 @@
+NP0251_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.55
+01_normal
+	bounds: 253, 931, 126, 91
+02_respond
+	bounds: 697, 378, 116, 83
+	offsets: 5, 5, 126, 93
+03_smile
+	bounds: 868, 206, 113, 80
+	offsets: 5, 5, 123, 90
+04_embarassed
+	bounds: 2, 387, 116, 93
+	offsets: 5, 5, 126, 103
+05_serious
+	bounds: 629, 213, 116, 80
+	offsets: 5, 5, 126, 90
+06_depressed
+	bounds: 870, 288, 116, 80
+	offsets: 5, 5, 126, 90
+07
+	bounds: 634, 295, 116, 81
+	offsets: 5, 5, 126, 91
+08
+	bounds: 2, 304, 116, 81
+	offsets: 5, 5, 126, 91
+09
+	bounds: 906, 370, 116, 91
+	offsets: 5, 5, 126, 101
+10
+	bounds: 581, 505, 123, 92
+	offsets: 7, 5, 135, 102
+11
+	bounds: 873, 619, 123, 92
+	offsets: 7, 5, 135, 102
+12
+	bounds: 899, 713, 123, 92
+	offsets: 7, 5, 135, 102
+13
+	bounds: 570, 413, 125, 90
+	offsets: 5, 5, 135, 100
+Hair_Cover
+	bounds: 2, 855, 171, 167
+NP0251
+	bounds: 541, 569, 396, 453
+	offsets: 155, 971, 631, 1426
+NP0251_01
+	bounds: 2, 43, 630, 979
+	offsets: 1, 0, 631, 1426
+Sunglass
+	bounds: 255, 875, 111, 54
+default
+	bounds: 752, 296, 116, 80
+	offsets: 5, 5, 126, 90
+eyeclose
+	bounds: 752, 213, 114, 81
+	offsets: 5, 5, 124, 91
+halo
+	bounds: 731, 453, 291, 136
+	offsets: 1, 2, 292, 140

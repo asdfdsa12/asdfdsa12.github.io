@@ -1,0 +1,108 @@
+NP0162_spr.png
+	size: 1024, 1024
+	filter: Linear, Linear
+	scale: 0.48
+01_nomal
+	bounds: 571, 853, 120, 76
+02_respond
+	bounds: 869, 328, 112, 76
+	offsets: 4, 4, 120, 85
+03_smile
+	bounds: 841, 484, 112, 78
+	offsets: 4, 4, 120, 88
+04_embarassed
+	bounds: 909, 724, 113, 79
+	offsets: 4, 4, 122, 87
+05_serious
+	bounds: 116, 263, 112, 67
+	offsets: 4, 4, 120, 75
+06_depressed
+	bounds: 230, 243, 99, 68
+	offsets: 4, 4, 107, 76
+07
+	bounds: 104, 194, 99, 67
+	offsets: 4, 4, 108, 75
+08
+	bounds: 909, 262, 112, 64
+	offsets: 4, 4, 120, 72
+09
+	bounds: 829, 406, 114, 76
+	offsets: 4, 4, 122, 84
+10
+	bounds: 886, 644, 113, 78
+	offsets: 4, 4, 122, 86
+11
+	bounds: 741, 753, 112, 71
+	offsets: 4, 4, 120, 79
+12
+	bounds: 2, 868, 112, 70
+	offsets: 4, 4, 120, 78
+13
+	bounds: 714, 845, 112, 80
+	offsets: 4, 4, 120, 88
+14
+	bounds: 2, 940, 113, 82
+	offsets: 4, 4, 122, 90
+15
+	bounds: 394, 329, 112, 68
+	offsets: 4, 4, 120, 76
+16
+	bounds: 863, 564, 112, 78
+	offsets: 4, 4, 120, 87
+17
+	bounds: 117, 953, 99, 69
+	offsets: 4, 4, 107, 77
+Hair_Cover
+	bounds: 205, 178, 105, 63
+	offsets: 4, 4, 113, 71
+NP0162
+	bounds: 793, 487, 206, 535
+	offsets: 218, 1085, 802, 1620
+NP0162_01
+	bounds: 378, 29, 644, 489
+	offsets: 0, 604, 802, 1620
+	rotate: 180
+NP0162_02
+	bounds: 2, 385, 756, 637
+	offsets: 46, 0, 802, 1620
+Particle_01
+	bounds: 501, 965, 63, 57
+Particle_02
+	bounds: 116, 875, 90, 76
+	offsets: 1, 0, 91, 76
+Particle_03
+	bounds: 120, 39, 143, 187
+	offsets: 0, 0, 144, 187
+	rotate: 90
+Particle_04
+	bounds: 230, 270, 175, 111
+	offsets: 1, 2, 178, 114
+Particle_05
+	bounds: 2, 57, 117, 135
+	offsets: 0, 2, 117, 137
+Particle_06
+	bounds: 757, 629, 77, 122
+	offsets: 2, 0, 79, 122
+Particle_07
+	bounds: 770, 933, 26, 89
+	offsets: 0, 1, 27, 90
+Particle_08
+	bounds: 782, 562, 45, 116
+	offsets: 1, 0, 48, 117
+Particle_09
+	bounds: 317, 27, 174, 86
+	rotate: 90
+Particle_10
+	bounds: 2, 57, 386, 335
+default
+	bounds: 2, 284, 112, 67
+	offsets: 4, 4, 120, 76
+eyeclose
+	bounds: 2, 215, 100, 67
+	offsets: 4, 4, 108, 76
+halo_01
+	bounds: 536, 923, 232, 99
+	offsets: 0, 2, 232, 102
+halo_02
+	bounds: 320, 897, 252, 125
+	offsets: 0, 0, 253, 125

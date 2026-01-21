@@ -1,0 +1,44 @@
+chinatsu_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1791, 1513, 194, 144
+	offsets: 10, 10, 214, 164
+01_nomal
+	bounds: 1528, 1785, 214, 164
+	rotate: 90
+02_respond
+	bounds: 1694, 1805, 194, 153
+	offsets: 10, 10, 214, 173
+	rotate: 90
+03_smile
+	bounds: 1618, 1372, 183, 139
+	offsets: 10, 10, 203, 159
+04_embarassed
+	bounds: 1849, 1805, 194, 150
+	offsets: 10, 10, 214, 170
+	rotate: 90
+05_serious
+	bounds: 1595, 1513, 194, 144
+	offsets: 10, 10, 214, 164
+06_depressed
+	bounds: 1803, 1373, 183, 138
+	offsets: 10, 10, 203, 158
+07
+	bounds: 1694, 1659, 194, 144
+	offsets: 10, 10, 214, 164
+chinatsu
+	bounds: 910, 1086, 795, 913
+	offsets: 315, 1287, 1110, 2200
+	rotate: 180
+chinatsu_1
+	bounds: 2, 695, 1084, 1304
+	offsets: 0, 0, 1110, 2200
+eyeclose
+	bounds: 317, 1521, 183, 139
+	offsets: 10, 10, 203, 159
+halo
+	bounds: 2, 1551, 504, 448
+object_glasses
+	bounds: 2, 1913, 204, 86
+	offsets: 10, 10, 224, 106

@@ -1,0 +1,32 @@
+CH0095_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_defualt
+	bounds: 1695, 1890, 221, 156
+01_normal
+	bounds: 1695, 1890, 221, 156
+02_respond
+	bounds: 1246, 1886, 221, 160
+03_smile
+	bounds: 1469, 1732, 220, 156
+04_embarassed
+	bounds: 2, 1884, 221, 162
+05_serious
+	bounds: 2, 1736, 215, 146
+06_depressed
+	bounds: 1691, 1731, 215, 157
+07
+	bounds: 1246, 1730, 217, 154
+CH0095
+	bounds: 2, 784, 1370, 1262
+	offsets: 0, 0, 1370, 2386
+CH009599
+	bounds: 873, 155, 1173, 1220
+	offsets: 52, 1166, 1370, 2386
+	rotate: 180
+Gun
+	bounds: 583, 1624, 345, 422
+eyeclose
+	bounds: 1469, 1890, 224, 156
+halo
+	bounds: 892, 1848, 352, 198

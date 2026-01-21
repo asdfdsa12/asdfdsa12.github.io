@@ -1,0 +1,51 @@
+azusa_swimsuit_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+	scale: 0.9
+00_default
+	bounds: 2, 1622, 174, 166
+	offsets: 9, 9, 192, 184
+01_normal
+	bounds: 2, 1790, 192, 184
+02_respond
+	bounds: 1420, 1597, 172, 161
+	offsets: 9, 9, 190, 178
+03_smile
+	bounds: 1705, 1566, 170, 161
+	offsets: 8, 9, 186, 179
+04_embarrass
+	bounds: 1579, 1897, 163, 149
+	offsets: 9, 9, 181, 167
+05_serious
+	bounds: 1877, 1575, 164, 152
+	offsets: 9, 8, 182, 169
+06_embarrassed
+	bounds: 1872, 1904, 170, 142
+	offsets: 9, 9, 188, 160
+07_embarrass2
+	bounds: 144, 1120, 164, 151
+	offsets: 9, 9, 182, 169
+08_ashamed
+	bounds: 1850, 1729, 196, 169
+	offsets: 13, 9, 218, 187
+Diorama _BG
+	bounds: 310, 87, 772, 1247
+Diorama _BG_1
+	bounds: 1557, 1698, 313, 348
+	offsets: 1, 2, 314, 350
+Halo
+	bounds: 1303, 1745, 274, 301
+	offsets: 3, 2, 281, 303
+azusa_swimsuit_1
+	bounds: 2, 1212, 1307, 834
+	offsets: 63, 787, 1653, 1621
+azusa_swimsuit_2
+	bounds: 889, 27, 1016, 742
+	offsets: 0, 51, 1653, 1621
+	rotate: 180
+azusa_swimsuit_3
+	bounds: 687, 767, 1359, 823
+	offsets: 294, 1, 1653, 1621
+eyeclose
+	bounds: 1245, 1533, 173, 155
+	offsets: 9, 9, 191, 173

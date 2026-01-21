@@ -1,0 +1,45 @@
+eimi_spr.png
+	size: 2048, 2048
+	filter: Linear, Linear
+00_default
+	bounds: 1674, 1688, 212, 178
+	offsets: 10, 10, 232, 198
+01_normal
+	bounds: 1226, 1859, 231, 187
+02_respond
+	bounds: 1674, 1868, 212, 178
+	offsets: 10, 10, 232, 198
+03_ex
+	bounds: 1664, 1406, 230, 139
+03_smile
+	bounds: 1459, 1867, 213, 179
+	offsets: 10, 10, 233, 199
+03_smile_1
+	bounds: 1225, 1430, 212, 128
+	offsets: 10, 10, 232, 148
+04_embarrass
+	bounds: 276, 1706, 212, 164
+	offsets: 10, 10, 232, 184
+04_embarrass_1
+	bounds: 1231, 1560, 212, 128
+	offsets: 10, 10, 232, 148
+04_ex
+	bounds: 1664, 1547, 230, 139
+05_serious
+	bounds: 1452, 1543, 210, 153
+	offsets: 10, 10, 230, 173
+06_depressed
+	bounds: 1235, 1690, 215, 167
+	offsets: 10, 10, 235, 187
+character
+	bounds: 916, 61, 1102, 1130
+	offsets: 315, 1249, 1417, 2379
+	rotate: 90
+character_1
+	bounds: 2, 790, 1301, 1256
+	offsets: 0, 0, 1417, 2379
+eyeclose
+	bounds: 1459, 1698, 208, 167
+	offsets: 10, 10, 228, 187
+halo
+	bounds: 225, 1872, 385, 174
