@@ -1,0 +1,125 @@
+
+kirara_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_default
+  rotate: false
+  xy: 103, 650
+  size: 99, 81
+  orig: 99, 81
+  offset: 0, 0
+  index: -1
+01_normal
+  rotate: false
+  xy: 100, 733
+  size: 99, 76
+  orig: 99, 76
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 2, 651
+  size: 99, 80
+  orig: 99, 80
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 502, 730
+  size: 91, 79
+  orig: 91, 79
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: false
+  xy: 401, 731
+  size: 99, 78
+  orig: 99, 78
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 595, 730
+  size: 97, 79
+  orig: 97, 79
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 694, 730
+  size: 100, 79
+  orig: 100, 79
+  offset: 0, 0
+  index: -1
+07_other
+  rotate: false
+  xy: 2, 736
+  size: 96, 73
+  orig: 96, 73
+  offset: 0, 0
+  index: -1
+08_other
+  rotate: false
+  xy: 299, 732
+  size: 100, 77
+  orig: 100, 77
+  offset: 0, 0
+  index: -1
+09_other
+  rotate: false
+  xy: 796, 730
+  size: 98, 79
+  orig: 98, 79
+  offset: 0, 0
+  index: -1
+10_other
+  rotate: false
+  xy: 204, 644
+  size: 97, 86
+  orig: 97, 86
+  offset: 0, 0
+  index: -1
+11_other
+  rotate: true
+  xy: 303, 637
+  size: 92, 97
+  orig: 92, 97
+  offset: 0, 0
+  index: -1
+12_other
+  rotate: false
+  xy: 896, 730
+  size: 102, 79
+  orig: 102, 79
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 201, 733
+  size: 96, 76
+  orig: 96, 76
+  offset: 0, 0
+  index: -1
+fronthair
+  rotate: false
+  xy: 531, 620
+  size: 119, 108
+  orig: 119, 108
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 402, 633
+  size: 127, 95
+  orig: 127, 95
+  offset: 0, 0
+  index: -1
+kirara
+  rotate: true
+  xy: 2, 2
+  size: 616, 996
+  orig: 616, 996
+  offset: 0, 0
+  index: -1

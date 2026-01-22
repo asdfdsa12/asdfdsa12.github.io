@@ -1,0 +1,97 @@
+
+reizyo_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 2, 961
+  size: 74, 55
+  orig: 74, 55
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: false
+  xy: 2, 961
+  size: 74, 55
+  orig: 74, 55
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 360, 956
+  size: 74, 60
+  orig: 74, 60
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 284, 957
+  size: 74, 59
+  orig: 74, 59
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: false
+  xy: 436, 956
+  size: 91, 60
+  orig: 91, 60
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 622, 954
+  size: 74, 62
+  orig: 74, 62
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 847, 940
+  size: 91, 76
+  orig: 91, 76
+  offset: 0, 0
+  index: -1
+07_exciting
+  rotate: false
+  xy: 698, 949
+  size: 147, 67
+  orig: 147, 67
+  offset: 0, 0
+  index: -1
+08_hungry
+  rotate: false
+  xy: 529, 956
+  size: 91, 60
+  orig: 91, 60
+  offset: 0, 0
+  index: -1
+09_shine
+  rotate: true
+  xy: 940, 925
+  size: 91, 76
+  orig: 91, 76
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 78, 961
+  size: 71, 55
+  orig: 71, 55
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 151, 958
+  size: 131, 58
+  orig: 131, 58
+  offset: 0, 0
+  index: -1
+reizyo
+  rotate: true
+  xy: 2, 549
+  size: 374, 998
+  orig: 374, 998
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,90 @@
+
+marina_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 2, 615
+  size: 77, 60
+  orig: 77, 60
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: false
+  xy: 2, 615
+  size: 77, 60
+  orig: 77, 60
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 81, 615
+  size: 79, 60
+  orig: 79, 60
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 162, 615
+  size: 75, 60
+  orig: 75, 60
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: false
+  xy: 401, 613
+  size: 76, 62
+  orig: 76, 62
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 479, 611
+  size: 81, 64
+  orig: 81, 64
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 239, 615
+  size: 76, 60
+  orig: 76, 60
+  offset: 0, 0
+  index: -1
+07_ex
+  rotate: false
+  xy: 317, 614
+  size: 82, 61
+  orig: 82, 61
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: true
+  xy: 562, 601
+  size: 74, 81
+  orig: 74, 81
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 757, 553
+  size: 144, 122
+  orig: 144, 122
+  offset: 0, 0
+  index: -1
+marina
+  rotate: true
+  xy: 2, 2
+  size: 549, 1006
+  orig: 549, 1006
+  offset: 0, 0
+  index: -1
+object_fronthair
+  rotate: false
+  xy: 645, 597
+  size: 110, 78
+  orig: 112, 78
+  offset: 1, 0
+  index: -1

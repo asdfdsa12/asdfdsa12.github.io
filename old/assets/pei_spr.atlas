@@ -1,0 +1,83 @@
+
+pei_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_default
+  rotate: true
+  xy: 541, 220
+  size: 292, 159
+  orig: 292, 159
+  offset: 0, 0
+  index: -1
+01_normal
+  rotate: false
+  xy: 712, 945
+  size: 72, 51
+  orig: 72, 51
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 703, 753
+  size: 72, 53
+  orig: 72, 53
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 712, 840
+  size: 70, 50
+  orig: 70, 50
+  offset: 0, 0
+  index: -1
+04_emabarassed
+  rotate: false
+  xy: 541, 60
+  size: 292, 158
+  orig: 292, 158
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: true
+  xy: 541, 514
+  size: 292, 160
+  orig: 292, 160
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 702, 459
+  size: 76, 53
+  orig: 76, 53
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 712, 892
+  size: 72, 51
+  orig: 72, 51
+  offset: 0, 0
+  index: -1
+halo
+  rotate: true
+  xy: 541, 808
+  size: 188, 169
+  orig: 188, 169
+  offset: 0, 0
+  index: -1
+object_glasses
+  rotate: false
+  xy: 702, 430
+  size: 78, 27
+  orig: 78, 27
+  offset: 0, 0
+  index: -1
+pei
+  rotate: false
+  xy: 2, 2
+  size: 537, 994
+  orig: 537, 994
+  offset: 0, 0
+  index: -1

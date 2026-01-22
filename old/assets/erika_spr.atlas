@@ -1,0 +1,76 @@
+
+erika_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 188, 914
+  size: 90, 69
+  orig: 90, 69
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: false
+  xy: 188, 914
+  size: 90, 69
+  orig: 90, 69
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 767, 908
+  size: 90, 75
+  orig: 90, 75
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 280, 914
+  size: 91, 69
+  orig: 91, 69
+  offset: 0, 0
+  index: -1
+04_ embarrassed
+  rotate: false
+  xy: 2, 915
+  size: 92, 68
+  orig: 92, 68
+  offset: 0, 0
+  index: -1
+05_ serious
+  rotate: false
+  xy: 96, 915
+  size: 90, 68
+  orig: 90, 68
+  offset: 0, 0
+  index: -1
+06_ shout
+  rotate: false
+  xy: 465, 910
+  size: 91, 73
+  orig: 91, 73
+  offset: 0, 0
+  index: -1
+eligos
+  rotate: true
+  xy: 2, 378
+  size: 528, 981
+  orig: 528, 981
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 373, 913
+  size: 90, 70
+  orig: 90, 70
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 558, 910
+  size: 207, 73
+  orig: 207, 73
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,41 @@
+
+terramachina_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+light
+  rotate: false
+  xy: 2, 16
+  size: 1006, 543
+  orig: 1006, 546
+  offset: 0, 3
+  index: -1
+terramachina_01
+  rotate: false
+  xy: 2, 561
+  size: 504, 449
+  orig: 504, 449
+  offset: 0, 0
+  index: -1
+terramachina_02
+  rotate: false
+  xy: 635, 591
+  size: 189, 194
+  orig: 189, 194
+  offset: 0, 0
+  index: -1
+terramachina_03
+  rotate: false
+  xy: 73, 414
+  size: 210, 146
+  orig: 210, 239
+  offset: 0, 0
+  index: -1
+terramachina_04
+  rotate: false
+  xy: 507, 649
+  size: 336, 360
+  orig: 336, 360
+  offset: 0, 0
+  index: -1

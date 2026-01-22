@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>BA Spine Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="spine-player.css">
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body { background: #1a1a1a; color: #eee; font-family: sans-serif; margin: 0; overflow: hidden; display: flex; }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100vh;
+            background: #252525;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 60px 20px 20px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #sidebar.open { left: 0; }
+
+        #menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        #player-container { 
+            width: 100vw;
+            height: 100vh; 
+            background-color: #000;
+        }
+
+        #player-container canvas {
+            width: 200% !important;
+            height: 200% !important;
+            transform: scale(0.5);
+            transform-origin: top left;
+        }
+
+        .search-container { position: relative; width: 100%; }
+        #charSearch { 
+            width: 100%; padding: 12px; border-radius: 4px; background: #444; 
+            color: white; border: 1px solid #666; outline: none; box-sizing: border-box;
+        }
+        .options-list { 
+            position: absolute; top: 50px; left: 0; width: 100%; max-height: 400px; 
+            background: #333; border: 1px solid #555; border-radius: 4px; 
+            overflow-y: auto; z-index: 1100; display: none;
+        }
+        .options-list.show { display: block; }
+        .option-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #444; font-size: 14px; }
+        .option-item:hover { background: #2b6cb0; }
+        .option-item.hidden { display: none; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
+        button.action-btn:hover { background: #666; }
+        #record-btn { background-color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <button id="menu-toggle" onclick="toggleSidebar()">☰ 메뉴 열기</button>
+    <div id="sidebar">
+        <label>캐릭터 검색: </label>
+
+        <div class="search-container">
+            <input type="text" id="charSearch" placeholder="이름 입력..." autocomplete="off">
+            <div id="options-list" class="options-list">
+                <div class="option-item" data-value="nagisa_spr">나기사</div>
+                <div class="option-item" data-value="nao_spr">나오</div>
+                <div class="option-item" data-value="nodoka_spr">노도카</div>
+                <div class="option-item" data-value="reizyo_spr">레이죠</div>
+                <div class="option-item" data-value="rone_spr">로네</div>
+                <div class="option-item" data-value="mari_spr">마리</div>
+                <div class="option-item" data-value="marina_spr">마리나</div>
+                <div class="option-item" data-value="makoto_spr">마코토</div>
+                <div class="option-item" data-value="CH0124_spr">메루</div>
+                <div class="option-item" data-value="momiji_spr">모미지</div>
+                <div class="option-item" data-value="minori_spr">미노리</div>
+                <div class="option-item" data-value="midori_spr">미도리</div>
+                <div class="option-item" data-value="miria_spr">미리아</div>
+                <div class="option-item" data-value="miyako_spr">미야코</div>
+                <div class="option-item" data-value="binah_spr">비나</div>
+                <div class="option-item" data-value="satsuki_spr">사츠키</div>
+                <div class="option-item" data-value="sakurako_spr">사쿠라코</div>
+                <div class="option-item" data-value="serika_newyear_spr">세리카(새해)</div>
+                <div class="option-item" data-value="erika_spr">에리카</div>
+                <div class="option-item" data-value="yukari_spr">유카리</div>
+                <div class="option-item" data-value="ibuki_spr">이부키</div>
+                <div class="option-item" data-value="kazusa_spr">카즈사</div>
+                <div class="option-item" data-value="kanna_spr">칸나</div>
+                <div class="option-item" data-value="kirara_spr">키라라</div>
+                <div class="option-item" data-value="terramachina_spr">테라마키나</div>
+                <div class="option-item" data-value="pei_spr">페이</div>
+            </div>
+        </div>
+
+        <button onclick="toggleFullscreen()" style="height: 35px; font-size: 15px">
+            전체화면
+        </button>
+
+        <button onclick="takeScreenshot()" style="height: 60px; font-size: 15px">이미지 다운로드<br>※얼굴이 이상하게 나옴, 캡쳐 추천</button>
+        <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c; height: 35px; font-size: 15px">녹화</button>
+    </div>
+
+    <div id="player-container"></div>
+
+    <script src="spine-player.js"></script>
+    
+    <script>
+        let player = null;
+        let selectedCharacter = "nagisa_spr";
+
+        function toggleFullscreen() {
+            const container = document.getElementById('player-container');
+
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+                }
+            }
+            }
+
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('menu-toggle');
+            sidebar.classList.toggle('open');
+            toggleBtn.innerText = sidebar.classList.contains('open') ? "✕ 닫기" : "☰ 메뉴 열기";
+        }
+
+        const searchInput = document.getElementById('charSearch');
+        const optionsList = document.getElementById('options-list');
+        const optionItems = document.querySelectorAll('.option-item');
+
+        searchInput.addEventListener('click', () => {
+            optionsList.classList.add('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                optionsList.classList.remove('show');
+            }
+        });
+
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            optionsList.classList.add('show');
+            
+            optionItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+
+        optionItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const val = this.getAttribute('data-value');
+                const name = this.textContent;
+                
+                selectedCharacter = val;
+                searchInput.value = name;
+                optionsList.classList.remove('show');
+                
+                loadSpine();
+            });
+        });
+
+        async function startAutoRecording() {
+            const canvas = document.querySelector('#player-container canvas');
+            const recordBtn = document.getElementById('record-btn');
+            
+            if (!player || !canvas) return;
+
+            if (player.skeleton) {
+                player.skeleton.premultipliedAlpha = false; 
+            }
+
+            const originalBg = player.config.backgroundColor;
+            player.config.backgroundColor = "#000000FF"; 
+
+            const state = player.animationState;
+            const track = state.getCurrent(0);
+            if (!track) return;
+            track.trackTime = 0;
+            player.play();
+
+            const stream = canvas.captureStream(60);
+            const options = { 
+                mimeType: 'video/webm; codecs=vp9',
+                videoBitsPerSecond: 30 * 1024 * 1024
+            };
+            
+            let recordedChunks = [];
+            const mediaRecorder = new MediaRecorder(stream, options);
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) recordedChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `spine_no_pma_${Date.now()}.webm`;
+                a.click();
+                
+                player.config.backgroundColor = originalBg;
+
+                if (recordBtn) {
+                    recordBtn.disabled = false;
+                    recordBtn.innerText = "녹화";
+                }
+            };
+
+            mediaRecorder.start();
+            if (recordBtn) {
+                recordBtn.disabled = true;
+                recordBtn.innerText = "🔴 녹화 중...";
+            }
+
+            const animationDuration = track.animation.duration;
+            setTimeout(() => {
+                if (mediaRecorder && mediaRecorder.state === "recording") {
+                    mediaRecorder.stop();
+                }
+            }, (animationDuration * 1000) + 200);
+        }
+
+        async function takeScreenshot() {
+            const container = document.getElementById('player-container');
+            const canvas = container.querySelector('canvas');
+
+            if (!player || !canvas) {
+                alert("플레이어를 찾을 수 없습니다.");
+                return;
+            }
+
+            const gl = canvas.getContext("webgl2", { preserveDrawingBuffer: true }) || 
+                    canvas.getContext("webgl", { preserveDrawingBuffer: true});
+
+            if (!gl) {
+                alert("WebGL 컨텍스트를 사용할 수 없습니다.");
+                return;
+            }
+
+            requestAnimationFrame(() => {
+                const width = canvas.width;
+                const height = canvas.height;
+                const pixels = new Uint8Array(width * height * 4);
+                
+                gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+
+                let minX = width, minY = height, maxX = 0, maxY = 0;
+                let found = false;
+
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        const index = (y * width + x) * 4;
+                        if (pixels[index + 3] > 0) {
+                            if (x < minX) minX = x;
+                            if (x > maxX) maxX = x;
+                            if (y < minY) minY = y;
+                            if (y > maxY) maxY = y;
+                            found = true;
+                        }
+                    }
+                }
+
+                if (!found) {
+                    alert("실패");
+                    return;
+                }
+
+                const padding = 20;
+                const cropWidth = Math.min(width, (maxX - minX) + (padding * 2));
+                const cropHeight = Math.min(height, (maxY - minY) + (padding * 2));
+
+                const tempCanvas = document.createElement('canvas');
+                tempCanvas.width = cropWidth;
+                tempCanvas.height = cropHeight;
+                const tempCtx = tempCanvas.getContext('2d');
+
+                const sourceX = Math.max(0, minX - padding);
+                const sourceY = Math.max(0, height - maxY - padding);
+
+                tempCtx.drawImage(
+                    canvas,
+                    sourceX, sourceY, cropWidth, cropHeight,
+                    0, 0, cropWidth, cropHeight
+                );
+
+                const link = document.createElement('a');
+                link.download = `spine_capture_${Date.now()}.png`;
+                link.href = tempCanvas.toDataURL("image/png");
+                link.click();
+            });
+        }
+
+        function loadSpine() {
+            const container = document.getElementById('player-container');
+            container.innerHTML = '';
+
+            player = new spine.SpinePlayer("player-container", {
+                binary: true,
+                skelUrl: `assets/${selectedCharacter}.skel`, 
+                atlasUrl: `assets/${selectedCharacter}.atlas`,
+                showControls: true,
+                premultipliedAlpha: false,
+                backgroundColor: "#00000000",
+                alpha: true,
+                preserveDrawingBuffer: true,
+                viewport: {
+                    autoSize: true,
+                    padLeft: "1%", padRight: "1%", padTop: "1%", padBottom: "1%"
+                },
+                success: function(p) {
+                    if (p.skeleton && p.skeleton.data) {
+                        const animations = p.skeleton.data.animations;
+                        if (animations && animations.length > 0) {
+                            const firstAnim = animations[0].name;
+                            p.setAnimation(firstAnim, true);
+                        }
+                    }
+                },
+                error: function(p, reason) {
+                    console.error("로드 중 오류 발생:", reason);
+                }
+            });
+        }
+
+        window.onload = loadSpine;
+    </script>
+</body>
+</html>

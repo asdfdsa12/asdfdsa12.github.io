@@ -1,0 +1,97 @@
+
+yukari_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_nomal
+  rotate: false
+  xy: 191, 951
+  size: 97, 58
+  orig: 97, 58
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: false
+  xy: 191, 951
+  size: 97, 58
+  orig: 97, 58
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 487, 950
+  size: 97, 59
+  orig: 97, 59
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 586, 950
+  size: 97, 59
+  orig: 97, 59
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: false
+  xy: 685, 950
+  size: 97, 59
+  orig: 97, 59
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 2, 960
+  size: 93, 49
+  orig: 93, 49
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 97, 955
+  size: 92, 54
+  orig: 92, 54
+  offset: 0, 0
+  index: -1
+07_smile2
+  rotate: false
+  xy: 784, 949
+  size: 97, 60
+  orig: 97, 60
+  offset: 0, 0
+  index: -1
+08_madness
+  rotate: false
+  xy: 290, 951
+  size: 96, 58
+  orig: 96, 58
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 388, 951
+  size: 97, 58
+  orig: 97, 58
+  offset: 0, 0
+  index: -1
+fronthair
+  rotate: false
+  xy: 883, 930
+  size: 103, 79
+  orig: 103, 79
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 2, 822
+  size: 160, 131
+  orig: 160, 131
+  offset: 0, 0
+  index: -1
+yukari
+  rotate: true
+  xy: 2, 120
+  size: 700, 1007
+  orig: 700, 1007
+  offset: 0, 0
+  index: -1

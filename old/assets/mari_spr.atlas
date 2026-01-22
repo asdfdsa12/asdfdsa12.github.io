@@ -1,0 +1,69 @@
+
+mari_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 294, 925
+  size: 92, 65
+  orig: 92, 65
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 388, 925
+  size: 92, 65
+  orig: 92, 65
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 482, 925
+  size: 96, 65
+  orig: 96, 65
+  offset: 0, 0
+  index: -1
+04_embarrassed
+  rotate: false
+  xy: 195, 927
+  size: 97, 63
+  orig: 97, 63
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 100, 933
+  size: 93, 57
+  orig: 93, 57
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 2, 934
+  size: 96, 56
+  orig: 96, 56
+  offset: 0, 0
+  index: -1
+eyeclosed
+  rotate: false
+  xy: 580, 925
+  size: 93, 65
+  orig: 93, 65
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 675, 855
+  size: 182, 135
+  orig: 182, 135
+  offset: 0, 0
+  index: -1
+mari
+  rotate: true
+  xy: 2, 500
+  size: 353, 988
+  orig: 353, 988
+  offset: 0, 0
+  index: -1

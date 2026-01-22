@@ -1,0 +1,104 @@
+
+miria_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 379, 7
+  size: 92, 77
+  orig: 92, 77
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: false
+  xy: 379, 7
+  size: 92, 77
+  orig: 92, 77
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 191, 4
+  size: 93, 80
+  orig: 93, 80
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 286, 6
+  size: 91, 78
+  orig: 91, 78
+  offset: 0, 0
+  index: -1
+04_embarrassed
+  rotate: false
+  xy: 473, 7
+  size: 92, 77
+  orig: 92, 77
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 96, 3
+  size: 93, 81
+  orig: 93, 81
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 755, 10
+  size: 98, 74
+  orig: 98, 74
+  offset: 0, 0
+  index: -1
+07_smile2
+  rotate: false
+  xy: 2, 2
+  size: 92, 82
+  orig: 92, 82
+  offset: 0, 0
+  index: -1
+08_embarrass2
+  rotate: true
+  xy: 828, 555
+  size: 147, 114
+  orig: 147, 114
+  offset: 0, 0
+  index: -1
+09_comical
+  rotate: false
+  xy: 661, 9
+  size: 92, 75
+  orig: 92, 75
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 567, 7
+  size: 92, 77
+  orig: 92, 77
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 828, 869
+  size: 150, 151
+  orig: 150, 151
+  offset: 0, 0
+  index: -1
+headbandage
+  rotate: true
+  xy: 828, 704
+  size: 163, 135
+  orig: 163, 135
+  offset: 0, 0
+  index: -1
+miria
+  rotate: false
+  xy: 2, 86
+  size: 824, 934
+  orig: 824, 934
+  offset: 0, 0
+  index: -1

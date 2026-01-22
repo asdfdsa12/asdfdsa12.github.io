@@ -1,0 +1,90 @@
+
+binah_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+binah 2
+  rotate: true
+  xy: 564, 116
+  size: 560, 177
+  orig: 560, 177
+  offset: 0, 0
+  index: -1
+binah 2_light
+  rotate: true
+  xy: 743, 28
+  size: 240, 76
+  orig: 240, 76
+  offset: 0, 0
+  index: -1
+binah 3
+  rotate: false
+  xy: 2, 794
+  size: 680, 216
+  orig: 680, 216
+  offset: 0, 0
+  index: -1
+binah 3_light
+  rotate: true
+  xy: 905, 174
+  size: 300, 105
+  orig: 300, 105
+  offset: 0, 0
+  index: -1
+binah1
+  rotate: false
+  xy: 2, 132
+  size: 560, 660
+  orig: 560, 660
+  offset: 0, 0
+  index: -1
+binah1_light
+  rotate: false
+  xy: 743, 270
+  size: 160, 204
+  orig: 160, 204
+  offset: 0, 0
+  index: -1
+binah1_light2
+  rotate: true
+  xy: 743, 476
+  size: 200, 180
+  orig: 200, 180
+  offset: 0, 0
+  index: -1
+fog1_particle
+  rotate: false
+  xy: 2, 18
+  size: 320, 112
+  orig: 320, 112
+  offset: 0, 0
+  index: -1
+fog2
+  rotate: false
+  xy: 324, 16
+  size: 360, 98
+  orig: 360, 98
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 684, 678
+  size: 266, 332
+  orig: 266, 332
+  offset: 0, 0
+  index: -1
+halo_particle 1
+  rotate: true
+  xy: 564, 752
+  size: 40, 65
+  orig: 40, 65
+  offset: 0, 0
+  index: -1
+halo_particle 2
+  rotate: false
+  xy: 631, 751
+  size: 40, 41
+  orig: 40, 41
+  offset: 0, 0
+  index: -1

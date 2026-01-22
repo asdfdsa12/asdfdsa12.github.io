@@ -1,0 +1,97 @@
+
+kirino_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_default
+  rotate: true
+  xy: 829, 881
+  size: 129, 152
+  orig: 129, 152
+  offset: 0, 0
+  index: -1
+01_normal
+  rotate: true
+  xy: 675, 881
+  size: 129, 152
+  orig: 129, 152
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: true
+  xy: 331, 886
+  size: 124, 170
+  orig: 124, 170
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: true
+  xy: 2, 783
+  size: 133, 153
+  orig: 133, 153
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: false
+  xy: 2, 607
+  size: 152, 174
+  orig: 152, 174
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: true
+  xy: 804, 738
+  size: 141, 153
+  orig: 141, 153
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 158, 894
+  size: 171, 116
+  orig: 171, 116
+  offset: 0, 0
+  index: -1
+07
+  rotate: true
+  xy: 503, 886
+  size: 124, 170
+  orig: 124, 170
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: true
+  xy: 157, 755
+  size: 129, 173
+  orig: 129, 173
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 2, 918
+  size: 154, 92
+  orig: 154, 92
+  offset: 0, 0
+  index: -1
+kirino
+  rotate: true
+  xy: 2, 130
+  size: 444, 1008
+  orig: 444, 1008
+  offset: 0, 0
+  index: -1
+object_basic hand
+  rotate: true
+  xy: 332, 748
+  size: 131, 470
+  orig: 131, 470
+  offset: 0, 0
+  index: -1
+object_salute hand
+  rotate: true
+  xy: 156, 576
+  size: 170, 200
+  orig: 170, 200
+  offset: 0, 0
+  index: -1

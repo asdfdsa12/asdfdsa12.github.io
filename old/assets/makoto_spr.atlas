@@ -1,0 +1,104 @@
+
+makoto_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_defualt
+  rotate: false
+  xy: 850, 322
+  size: 51, 64
+  orig: 51, 64
+  offset: 0, 0
+  index: -1
+01_normal
+  rotate: false
+  xy: 850, 196
+  size: 45, 59
+  orig: 45, 59
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 944, 854
+  size: 44, 65
+  orig: 44, 65
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 389, 321
+  size: 47, 56
+  orig: 47, 56
+  offset: 0, 0
+  index: -1
+04_embarrassed
+  rotate: false
+  xy: 342, 315
+  size: 45, 62
+  orig: 45, 62
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 294, 312
+  size: 46, 65
+  orig: 46, 65
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 944, 921
+  size: 45, 72
+  orig: 45, 72
+  offset: 0, 0
+  index: -1
+07
+  rotate: false
+  xy: 850, 257
+  size: 45, 63
+  orig: 45, 63
+  offset: 0, 0
+  index: -1
+Makoto_1
+  rotate: true
+  xy: 2, 2
+  size: 283, 609
+  orig: 283, 609
+  offset: 0, 0
+  index: -1
+Makoto_2
+  rotate: false
+  xy: 294, 379
+  size: 323, 614
+  orig: 323, 614
+  offset: 0, 0
+  index: -1
+Makoto_3
+  rotate: false
+  xy: 2, 287
+  size: 290, 706
+  orig: 290, 706
+  offset: 0, 0
+  index: -1
+Makoto_4
+  rotate: false
+  xy: 619, 388
+  size: 323, 605
+  orig: 323, 605
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 944, 793
+  size: 44, 59
+  orig: 44, 59
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 619, 183
+  size: 229, 203
+  orig: 229, 203
+  offset: 0, 0
+  index: -1

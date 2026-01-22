@@ -1,0 +1,118 @@
+
+kanna_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_default
+  rotate: false
+  xy: 660, 464
+  size: 109, 75
+  orig: 109, 75
+  offset: 0, 0
+  index: -1
+01_normal
+  rotate: true
+  xy: 518, 2
+  size: 109, 77
+  orig: 109, 77
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: true
+  xy: 176, 2
+  size: 109, 84
+  orig: 109, 84
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: true
+  xy: 660, 357
+  size: 105, 77
+  orig: 105, 77
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: true
+  xy: 262, 2
+  size: 109, 84
+  orig: 109, 84
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: true
+  xy: 433, 5
+  size: 106, 83
+  orig: 106, 83
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: true
+  xy: 660, 138
+  size: 109, 72
+  orig: 109, 72
+  offset: 0, 0
+  index: -1
+07
+  rotate: true
+  xy: 348, 4
+  size: 107, 83
+  orig: 107, 83
+  offset: 0, 0
+  index: -1
+08
+  rotate: true
+  xy: 660, 249
+  size: 106, 75
+  orig: 106, 75
+  offset: 0, 0
+  index: -1
+08_shadow
+  rotate: true
+  xy: 660, 541
+  size: 473, 203
+  orig: 475, 204
+  offset: 1, 1
+  index: -1
+09
+  rotate: true
+  xy: 597, 3
+  size: 108, 76
+  orig: 108, 76
+  offset: 0, 0
+  index: -1
+10
+  rotate: true
+  xy: 737, 251
+  size: 104, 72
+  orig: 104, 72
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: true
+  xy: 675, 32
+  size: 104, 75
+  orig: 104, 75
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 2, 3
+  size: 172, 108
+  orig: 172, 108
+  offset: 0, 0
+  index: -1
+kanna
+  rotate: false
+  xy: 2, 113
+  size: 656, 901
+  orig: 656, 901
+  offset: 0, 0
+  index: -1
+obaject_fronthair
+  rotate: true
+  xy: 734, 150
+  size: 97, 79
+  orig: 98, 81
+  offset: 1, 1
+  index: -1

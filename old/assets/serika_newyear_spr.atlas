@@ -1,0 +1,125 @@
+
+serika_newyear_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 418, 13
+  size: 94, 72
+  orig: 94, 72
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: true
+  xy: 393, 396
+  size: 93, 80
+  orig: 93, 80
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: true
+  xy: 393, 396
+  size: 93, 80
+  orig: 93, 80
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: true
+  xy: 2, 932
+  size: 91, 74
+  orig: 91, 74
+  offset: 0, 0
+  index: -1
+04_embarrassed
+  rotate: false
+  xy: 323, 3
+  size: 93, 83
+  orig: 93, 83
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: true
+  xy: 428, 621
+  size: 93, 74
+  orig: 93, 74
+  offset: 0, 0
+  index: -1
+06_shout
+  rotate: true
+  xy: 413, 302
+  size: 92, 77
+  orig: 92, 77
+  offset: 0, 0
+  index: -1
+07_
+  rotate: true
+  xy: 387, 88
+  size: 92, 83
+  orig: 92, 83
+  offset: 0, 0
+  index: -1
+08_
+  rotate: false
+  xy: 371, 814
+  size: 94, 81
+  orig: 94, 81
+  offset: 0, 0
+  index: -1
+09_
+  rotate: true
+  xy: 322, 901
+  size: 122, 121
+  orig: 122, 121
+  offset: 0, 0
+  index: -1
+10_
+  rotate: false
+  xy: 330, 492
+  size: 120, 127
+  orig: 120, 127
+  offset: 0, 0
+  index: -1
+11_
+  rotate: true
+  xy: 406, 182
+  size: 94, 76
+  orig: 94, 76
+  offset: 0, 0
+  index: -1
+12_
+  rotate: true
+  xy: 428, 717
+  size: 95, 74
+  orig: 95, 74
+  offset: 0, 0
+  index: -1
+13_
+  rotate: true
+  xy: 452, 526
+  size: 94, 68
+  orig: 94, 68
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: true
+  xy: 444, 928
+  size: 94, 72
+  orig: 94, 72
+  offset: 0, 0
+  index: -1
+halo
+  rotate: true
+  xy: 359, 620
+  size: 191, 67
+  orig: 191, 67
+  offset: 0, 0
+  index: -1
+serika_newyear
+  rotate: false
+  xy: 2, 16
+  size: 409, 1007
+  orig: 409, 1007
+  offset: 0, 0
+  index: -1

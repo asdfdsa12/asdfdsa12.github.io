@@ -1,0 +1,76 @@
+
+miyako_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_default
+  rotate: false
+  xy: 192, 943
+  size: 94, 59
+  orig: 94, 59
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 384, 941
+  size: 94, 61
+  orig: 94, 61
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 96, 943
+  size: 94, 59
+  orig: 94, 59
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: false
+  xy: 575, 926
+  size: 128, 76
+  orig: 128, 76
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 2, 944
+  size: 92, 58
+  orig: 92, 58
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 705, 926
+  size: 102, 76
+  orig: 102, 76
+  offset: 0, 0
+  index: -1
+07_nevermind
+  rotate: false
+  xy: 480, 932
+  size: 93, 70
+  orig: 93, 70
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 288, 943
+  size: 94, 59
+  orig: 94, 59
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 809, 918
+  size: 156, 84
+  orig: 156, 84
+  offset: 0, 0
+  index: -1
+miyako
+  rotate: true
+  xy: 2, 252
+  size: 664, 1000
+  orig: 664, 1000
+  offset: 0, 0
+  index: -1

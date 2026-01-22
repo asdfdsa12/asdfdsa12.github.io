@@ -1,0 +1,76 @@
+
+rone_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_normal
+  rotate: false
+  xy: 521, 912
+  size: 119, 91
+  orig: 119, 91
+  offset: 0, 0
+  index: -1
+00_default
+  rotate: false
+  xy: 521, 912
+  size: 119, 91
+  orig: 119, 91
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 149, 920
+  size: 91, 83
+  orig: 91, 83
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 242, 920
+  size: 91, 83
+  orig: 91, 83
+  offset: 0, 0
+  index: -1
+04_embarrassed
+  rotate: false
+  xy: 335, 920
+  size: 91, 83
+  orig: 91, 83
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 428, 920
+  size: 91, 83
+  orig: 91, 83
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 2, 947
+  size: 74, 56
+  orig: 74, 56
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 78, 946
+  size: 69, 57
+  orig: 69, 57
+  offset: 0, 0
+  index: -1
+halo
+  rotate: true
+  xy: 642, 867
+  size: 136, 199
+  orig: 136, 199
+  offset: 0, 0
+  index: -1
+rone
+  rotate: true
+  xy: 2, 316
+  size: 549, 1001
+  orig: 550, 1001
+  offset: 0, 0
+  index: -1

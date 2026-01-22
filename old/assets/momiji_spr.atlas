@@ -1,0 +1,83 @@
+
+momiji_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00_default
+  rotate: false
+  xy: 497, 5
+  size: 95, 93
+  orig: 95, 93
+  offset: 0, 0
+  index: -1
+01_normal
+  rotate: false
+  xy: 400, 5
+  size: 95, 93
+  orig: 95, 93
+  offset: 0, 0
+  index: -1
+02_respond
+  rotate: false
+  xy: 303, 4
+  size: 95, 94
+  orig: 95, 94
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 659, 725
+  size: 89, 91
+  orig: 89, 91
+  offset: 0, 0
+  index: -1
+04_embarrass
+  rotate: true
+  xy: 659, 611
+  size: 112, 85
+  orig: 112, 85
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 205, 4
+  size: 96, 94
+  orig: 96, 94
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: true
+  xy: 2, 2
+  size: 96, 102
+  orig: 96, 102
+  offset: 0, 0
+  index: -1
+07
+  rotate: true
+  xy: 106, 2
+  size: 96, 97
+  orig: 96, 97
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: true
+  xy: 594, 8
+  size: 90, 93
+  orig: 90, 93
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 659, 818
+  size: 157, 171
+  orig: 159, 173
+  offset: 1, 1
+  index: -1
+momiji
+  rotate: false
+  xy: 2, 100
+  size: 655, 889
+  orig: 655, 889
+  offset: 0, 0
+  index: -1

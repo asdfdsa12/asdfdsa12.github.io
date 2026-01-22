@@ -1,0 +1,76 @@
+
+midori_spr.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+02_respond
+  rotate: false
+  xy: 530, 835
+  size: 91, 67
+  orig: 91, 67
+  offset: 0, 0
+  index: -1
+03_smile
+  rotate: false
+  xy: 275, 839
+  size: 87, 63
+  orig: 87, 63
+  offset: 0, 0
+  index: -1
+04_embarrassed
+  rotate: false
+  xy: 364, 838
+  size: 71, 64
+  orig: 71, 64
+  offset: 0, 0
+  index: -1
+05_serious
+  rotate: false
+  xy: 2, 846
+  size: 89, 56
+  orig: 89, 56
+  offset: 0, 0
+  index: -1
+06_depressed
+  rotate: false
+  xy: 93, 843
+  size: 89, 59
+  orig: 89, 59
+  offset: 0, 0
+  index: -1
+07
+  rotate: false
+  xy: 184, 843
+  size: 89, 59
+  orig: 89, 59
+  offset: 0, 0
+  index: -1
+default
+  rotate: false
+  xy: 437, 837
+  size: 91, 65
+  orig: 91, 65
+  offset: 0, 0
+  index: -1
+eyeclose
+  rotate: false
+  xy: 623, 835
+  size: 85, 67
+  orig: 85, 67
+  offset: 0, 0
+  index: -1
+halo
+  rotate: false
+  xy: 710, 715
+  size: 195, 187
+  orig: 195, 187
+  offset: 0, 0
+  index: -1
+midori
+  rotate: true
+  xy: 2, 2
+  size: 711, 883
+  orig: 711, 883
+  offset: 0, 0
+  index: -1
