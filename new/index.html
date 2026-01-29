@@ -74,7 +74,6 @@
         .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
         button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
         button.action-btn:hover { background: #666; }
-        #record-btn { background-color: #e74c3c; }
         .anim-container-wrapper {
             background: #333;
             padding: 10px;
@@ -84,7 +83,7 @@
         }
 
         #animation-list {
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -758,15 +757,13 @@
         <button onclick="toggleFullscreen()" style="height: 35px; font-size: 15px">
             전체화면
         </button>
+        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
         <div class="anim-container-wrapper">
             <div class="slider-header" style="margin-bottom: 10px;">
                 <span>애니메이션 목록</span>
             </div>
             <div id="animation-list"></div>
         </div>
-
-        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
-        <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c; height: 35px; font-size: 15px">녹화</button>
     </div>
 
     <div id="player-container"></div>
@@ -899,68 +896,6 @@
                 loadSpine();
             });
         });
-
-        async function startAutoRecording() {
-            const canvas = document.querySelector('#player-container canvas');
-            const recordBtn = document.getElementById('record-btn');
-            
-            if (!player || !canvas) return;
-
-            if (player.skeleton) {
-                player.skeleton.premultipliedAlpha = false; 
-            }
-
-            const originalBg = player.config.backgroundColor;
-            player.config.backgroundColor = "#000000FF"; 
-
-            const state = player.animationState;
-            const track = state.getCurrent(0);
-            if (!track) return;
-            track.trackTime = 0;
-            player.play();
-
-            const stream = canvas.captureStream(60);
-            const options = { 
-                mimeType: 'video/webm; codecs=vp9',
-                videoBitsPerSecond: 30 * 1024 * 1024
-            };
-            
-            let recordedChunks = [];
-            const mediaRecorder = new MediaRecorder(stream, options);
-
-            mediaRecorder.ondataavailable = (e) => {
-                if (e.data.size > 0) recordedChunks.push(e.data);
-            };
-
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `spine_character_${Date.now()}.webm`;
-                a.click();
-                
-                player.config.backgroundColor = originalBg;
-
-                if (recordBtn) {
-                    recordBtn.disabled = false;
-                    recordBtn.innerText = "녹화";
-                }
-            };
-
-            mediaRecorder.start();
-            if (recordBtn) {
-                recordBtn.disabled = true;
-                recordBtn.innerText = "🔴 녹화 중...";
-            }
-
-            const animationDuration = track.animation.duration;
-            setTimeout(() => {
-                if (mediaRecorder && mediaRecorder.state === "recording") {
-                    mediaRecorder.stop();
-                }
-            }, (animationDuration * 1000) + 200);
-        }
 
         async function takeScreenshot() {
             const canvas = document.querySelector('#player-container canvas');
