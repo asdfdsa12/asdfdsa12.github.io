@@ -75,6 +75,63 @@
         button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
         button.action-btn:hover { background: #666; }
         #record-btn { background-color: #e74c3c; }
+        .anim-container-wrapper {
+            background: #333;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            margin-top: 10px;
+        }
+
+        #animation-list {
+            max-height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        #animation-list::-webkit-scrollbar { width: 6px; }
+        #animation-list::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+
+        #animation-list button {
+            width: 100%;
+            min-height: 45px; 
+            padding: 0 15px;
+            
+            background: #444;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+            cursor: pointer;
+            
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1;
+            
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.2s;
+        }
+
+        #animation-list button:hover {
+            background: #3a3a3a;
+            border-color: #2b6cb0;
+        }
+
+        #animation-list button.active {
+            background: #2b6cb0;
+            border-color: #63b3ed;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -701,6 +758,12 @@
         <button onclick="toggleFullscreen()" style="height: 35px; font-size: 15px">
             전체화면
         </button>
+        <div class="anim-container-wrapper">
+            <div class="slider-header" style="margin-bottom: 10px;">
+                <span>애니메이션 목록</span>
+            </div>
+            <div id="animation-list"></div>
+        </div>
 
         <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
         <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c; height: 35px; font-size: 15px">녹화</button>
@@ -713,6 +776,62 @@
     <script>
         let player = null;
         let selectedCharacter = "CH0222_spr";
+
+        function buildAnimationList(player) {
+            const list = document.getElementById("animation-list");
+            list.innerHTML = "";
+
+            const animations = player.skeleton.data.animations;
+            const animNames = animations.map(a => a.name);
+
+            const processedBases = new Set();
+
+            animations.forEach(anim => {
+                const name = anim.name;
+                
+                const match = name.match(/(.+?)(_[AM])/);
+                let displayName = name;
+                let isSet = false;
+                let baseName = name;
+
+                if (match) {
+                    baseName = match[1];
+                    displayName = baseName;
+                    isSet = true;
+                    
+                    if (processedBases.has(baseName)) return;
+                    processedBases.add(baseName);
+                }
+
+                const btn = document.createElement("button");
+                btn.textContent = displayName;
+
+                btn.onclick = () => {
+                    Array.from(list.children).forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    if (isSet) {
+                        const animM = baseName + "_M";
+                        const animA = baseName + "_A";
+
+                        player.animationState.setAnimation(1, animM, true);
+                        if (animNames.includes(animA)) {
+                            player.animationState.setAnimation(2, animA, true);
+                        }
+                    } else {
+                        if (name === "Idle_01") {
+                            player.animationState.setAnimation(0, "Idle_01", true);
+                            player.animationState.setEmptyAnimation(1, 0.2);
+                            player.animationState.setEmptyAnimation(2, 0.2);
+                        } else {
+                            player.animationState.setAnimation(1, name, true);
+                            player.animationState.setEmptyAnimation(2, 0.2);
+                        }
+                    }
+                };
+                list.appendChild(btn);
+            });
+        }
 
         function toggleFullscreen() {
             const container = document.getElementById('player-container');
@@ -907,7 +1026,7 @@
             player = new spine.SpinePlayer("player-container", {
                 skelUrl: `assets/${selectedCharacter}.skel`, 
                 atlasUrl: `assets/${selectedCharacter}.atlas`,
-                showControls: true,
+                showControls: false,
                 premultipliedAlpha: false,
                 backgroundColor: "#00000000",
                 alpha: true,
@@ -917,16 +1036,8 @@
                     padLeft: "1%", padRight: "1%", padTop: "1%", padBottom: "1%"
                 },
                 success: function(p) {
-                    if (p.skeleton && p.skeleton.data) {
-                        const animations = p.skeleton.data.animations;
-                        if (animations && animations.length > 0) {
-                            const firstAnim = animations[0].name;
-                            p.setAnimation(firstAnim, true);
-                        }
-                    }
-                },
-                error: function(p, reason) {
-                    console.error("로드 중 오류 발생:", reason);
+                    p.animationState.setAnimation(0, "Idle_01", true);
+                    buildAnimationList(player);
                 }
             });
         }
