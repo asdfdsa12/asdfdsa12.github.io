@@ -46,7 +46,7 @@
         #player-container { 
             width: 100vw;
             height: 100vh; 
-            background-color: #000;
+            background-color: #1a1a1a;
         }
 
         #player-container canvas {
@@ -774,6 +774,68 @@
         let player = null;
         let selectedCharacter = "CH0222_spr";
 
+        function enableCanvasDrag() {
+            const container = document.getElementById("player-container");
+            let dragging = false;
+            let startX = 0, startY = 0;
+            let offsetX = 0, offsetY = 0;
+
+            container.addEventListener("mousedown", e => {
+                dragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                container.style.cursor = "grabbing";
+            });
+
+            window.addEventListener("mousemove", e => {
+                if (!dragging) return;
+
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+
+                container.style.transform =
+                `translate(${offsetX + dx}px, ${offsetY + dy}px)`;
+            });
+
+            window.addEventListener("mouseup", () => {
+                if (!dragging) return;
+                dragging = false;
+
+                const transform = container.style.transform;
+                const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+
+                if (match) {
+                offsetX = parseFloat(match[1]);
+                offsetY = parseFloat(match[2]);
+                }
+
+                container.style.cursor = "grab";
+            });
+
+            }
+        enableCanvasDrag();
+
+        function enableCanvasWheelScale() {
+        let scale = 0.5;
+
+        const container = document.getElementById("player-container");
+
+        container.addEventListener("wheel", e => {
+            e.preventDefault();
+
+            const canvases = container.querySelectorAll("canvas");
+            if (!canvases.length) return;
+
+            scale += (e.deltaY < 0 ? 0.02 : -0.02);
+            scale = Math.min(Math.max(scale, 0.1), 2.0);
+
+            canvases.forEach(canvas => {
+            canvas.style.transformOrigin = "top left";
+            canvas.style.transform = `scale(${scale})`;
+            });
+        }, { passive: false });
+        }
+
         function buildAnimationList(player) {
             const list = document.getElementById("animation-list");
             list.innerHTML = "";
@@ -971,6 +1033,7 @@
                     padLeft: "1%", padRight: "1%", padTop: "1%", padBottom: "1%"
                 },
                 success: function(p) {
+                    enableCanvasWheelScale();
                     p.animationState.setAnimation(0, "Idle_01", true);
                     buildAnimationList(player);
                 }
