@@ -46,10 +46,11 @@
         #player-container { 
             width: 100vw;
             height: 100vh; 
-            background-color: #000;
+            background-color: #1a1a1a;
         }
 
         #player-container canvas {
+            position: absolute;
             width: 200% !important;
             height: 200% !important;
             transform: scale(0.5);
@@ -74,7 +75,63 @@
         .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
         button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
         button.action-btn:hover { background: #666; }
-        #record-btn { background-color: #e74c3c; }
+        .anim-container-wrapper {
+            background: #333;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            margin-top: 10px;
+        }
+
+        #animation-list {
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        #animation-list::-webkit-scrollbar { width: 6px; }
+        #animation-list::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+
+        #animation-list button {
+            width: 100%;
+            min-height: 45px; 
+            padding: 0 15px;
+            
+            background: #444;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+            cursor: pointer;
+            
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1;
+            
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.2s;
+        }
+
+        #animation-list button:hover {
+            background: #3a3a3a;
+            border-color: #2b6cb0;
+        }
+
+        #animation-list button.active {
+            background: #2b6cb0;
+            border-color: #63b3ed;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -118,9 +175,13 @@
         <button onclick="toggleFullscreen()" style="height: 35px; font-size: 15px">
             전체화면
         </button>
-
-        <button onclick="takeScreenshot()" style="height: 60px; font-size: 15px">이미지 다운로드<br>※얼굴이 이상하게 나옴, 캡쳐 추천</button>
-        <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c; height: 35px; font-size: 15px">녹화</button>
+        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
+        <div class="anim-container-wrapper">
+            <div class="slider-header" style="margin-bottom: 10px;">
+                <span>애니메이션 목록</span>
+            </div>
+            <div id="animation-list"></div>
+        </div>
     </div>
 
     <div id="player-container"></div>
@@ -130,6 +191,59 @@
     <script>
         let player = null;
         let selectedCharacter = "nagisa_spr";
+        const isMobile = window.matchMedia("(pointer: coarse)").matches;
+
+        function buildAnimationList(player) {
+            const list = document.getElementById("animation-list");
+            list.innerHTML = "";
+
+            const animations = player.skeleton.data.animations;
+            const animNames = animations.map(a => a.name);
+
+            const processedBases = new Set();
+
+            animations.forEach(anim => {
+                const name = anim.name;
+                
+                const match = name.match(/(.+?)(_[AM])/);
+                let displayName = name;
+                let isSet = false;
+                let baseName = name;
+
+                if (match) {
+                    baseName = match[1];
+                    displayName = baseName;
+                    isSet = true;
+                    
+                    if (processedBases.has(baseName)) return;
+                    processedBases.add(baseName);
+                }
+
+                const btn = document.createElement("button");
+                btn.textContent = displayName;
+
+                btn.onclick = () => {
+                    Array.from(list.children).forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    if (isSet) {
+                        const animM = baseName + "_M";
+                        const animA = baseName + "_A";
+
+                        player.animationState.setAnimation(1, animM, true);
+                        if (animNames.includes(animA)) {
+                            player.animationState.setAnimation(2, animA, true);
+                        }
+                    }
+                    else {
+                        player.animationState.setAnimation(1, name, true);
+                        player.animationState.setEmptyAnimation(2, 0.2);
+                    }
+                };
+                list.appendChild(btn);
+            });
+            
+        }
 
         function toggleFullscreen() {
             const container = document.getElementById('player-container');
@@ -198,66 +312,62 @@
             });
         });
 
-        async function startAutoRecording() {
-            const canvas = document.querySelector('#player-container canvas');
-            const recordBtn = document.getElementById('record-btn');
-            
-            if (!player || !canvas) return;
+        function enableCanvasDrag() {
+            const container = document.getElementById("player-container");
+            let dragging = false;
+            let startX = 0, startY = 0;
+            let offsetX = 0, offsetY = 0;
 
-            if (player.skeleton) {
-                player.skeleton.premultipliedAlpha = false; 
-            }
+            container.addEventListener("mousedown", e => {
+                dragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                container.style.cursor = "grabbing";
+            });
 
-            const originalBg = player.config.backgroundColor;
-            player.config.backgroundColor = "#000000FF"; 
+            window.addEventListener("mousemove", e => {
+                if (!dragging) return;
 
-            const state = player.animationState;
-            const track = state.getCurrent(0);
-            if (!track) return;
-            track.trackTime = 0;
-            player.play();
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
 
-            const stream = canvas.captureStream(60);
-            const options = { 
-                mimeType: 'video/webm; codecs=vp9',
-                videoBitsPerSecond: 30 * 1024 * 1024
-            };
-            
-            let recordedChunks = [];
-            const mediaRecorder = new MediaRecorder(stream, options);
+                container.style.transform =
+                `translate(${offsetX + dx}px, ${offsetY + dy}px)`;
+            });
 
-            mediaRecorder.ondataavailable = (e) => {
-                if (e.data.size > 0) recordedChunks.push(e.data);
-            };
+            window.addEventListener("mouseup", () => {
+                if (!dragging) return;
+                dragging = false;
 
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `spine_no_pma_${Date.now()}.webm`;
-                a.click();
-                
-                player.config.backgroundColor = originalBg;
+                const transform = container.style.transform;
+                const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
 
-                if (recordBtn) {
-                    recordBtn.disabled = false;
-                    recordBtn.innerText = "녹화";
+                if (match) {
+                offsetX = parseFloat(match[1]);
+                offsetY = parseFloat(match[2]);
                 }
-            };
 
-            mediaRecorder.start();
-            if (recordBtn) {
-                recordBtn.disabled = true;
-                recordBtn.innerText = "🔴 녹화 중...";
+                container.style.cursor = "grab";
+            });
             }
+        enableCanvasDrag();
 
-            const animationDuration = track.animation.duration;
-            setTimeout(() => {
-                if (mediaRecorder && mediaRecorder.state === "recording") {
-                    mediaRecorder.stop();
-                }
-            }, (animationDuration * 1000) + 200);
+        function enableCanvasWheelScale(p) {
+            let scale = 0.5;
+
+            const container = document.getElementById("player-container");
+
+            container.addEventListener("wheel", e => {
+                e.preventDefault();
+
+                const canvases = container.querySelectorAll("canvas");
+                if (!canvases.length) return;
+
+                scale += (e.deltaY < 0 ? 0.02 : -0.02);
+                scale = Math.min(Math.max(scale, 0.1), 2.0);
+
+                p.canvas.style.transform = `scale(${scale})`;
+            }, { passive: false });
         }
 
         async function takeScreenshot() {
@@ -338,7 +448,7 @@
                 binary: true,
                 skelUrl: `assets/${selectedCharacter}.skel`, 
                 atlasUrl: `assets/${selectedCharacter}.atlas`,
-                showControls: true,
+                showControls: false,
                 premultipliedAlpha: false,
                 backgroundColor: "#00000000",
                 alpha: true,
@@ -348,16 +458,17 @@
                     padLeft: "1%", padRight: "1%", padTop: "1%", padBottom: "1%"
                 },
                 success: function(p) {
-                    if (p.skeleton && p.skeleton.data) {
-                        const animations = p.skeleton.data.animations;
-                        if (animations && animations.length > 0) {
-                            const firstAnim = animations[0].name;
-                            p.setAnimation(firstAnim, true);
-                        }
+                    enableCanvasWheelScale(p);
+                    p.animationState.setAnimation(0, "Idle_01", true);
+                    if(!isMobile){
+                        p.canvas.style.transformOrigin = "center center";
+                        p.canvas.style.width = "200% !important";
+                        p.canvas.style.height = "200% !important";
+                        p.canvas.style.left = "-50%";
+                        p.canvas.style.top = "-50%";
+                        p.canvas.style.transform = "scale(0.5);";
                     }
-                },
-                error: function(p, reason) {
-                    console.error("로드 중 오류 발생:", reason);
+                    buildAnimationList(player);
                 }
             });
         }

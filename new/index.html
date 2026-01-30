@@ -46,10 +46,11 @@
         #player-container { 
             width: 100vw;
             height: 100vh; 
-            background-color: #000;
+            background-color: #1a1a1a;
         }
 
         #player-container canvas {
+            position: absolute;
             width: 200% !important;
             height: 200% !important;
             transform: scale(0.5);
@@ -74,7 +75,6 @@
         .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
         button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
         button.action-btn:hover { background: #666; }
-        #record-btn { background-color: #e74c3c; }
         .anim-container-wrapper {
             background: #333;
             padding: 10px;
@@ -84,7 +84,7 @@
         }
 
         #animation-list {
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -196,6 +196,7 @@
                 <div class="option-item" data-value="CH0319_spr">리츠</div>
                 <div class="option-item" data-value="rin_spr">린</div>
                 <div class="option-item" data-value="NP0097_spr">린(승무복)</div>
+                <div class="option-item" data-value="Rin_raiddungeon">린(총력전)</div>
                 <div class="option-item" data-value="mari_spr">마리</div>
                 <div class="option-item" data-value="CH0186_spr">마리(체육복)</div>
                 <div class="option-item" data-value="CH0273_spr">마리(아이돌)</div>
@@ -221,6 +222,7 @@
                 <div class="option-item" data-value="NP0267_spr">모모이(무장)</div>
                 <div class="option-item" data-value="NP0235_spr">모모이(방한복)</div>
                 <div class="option-item" data-value="momoka_spr">모모카</div>
+                <div class="option-item" data-value="Momoka_weekdungeon">모모카(던전)</div>
                 <div class="option-item" data-value="NP0098_spr">모모카(승무복)</div>
                 <div class="option-item" data-value="momiji_spr">모미지</div>
                 <div class="option-item" data-value="moe_spr">모에</div>
@@ -297,6 +299,7 @@
                 <div class="option-item" data-value="NP0244_spr">세이아(박스)</div>
                 <div class="option-item" data-value="CH0295_spr">세이아(수영복)</div>
                 <div class="option-item" data-value="sora_spr">소라</div>
+                <div class="option-item" data-value="sora_shop">소라(상점)</div>
                 <div class="option-item" data-value="CH9997_spr">쇼쿠호 미사키</div>
                 <div class="option-item" data-value="NP0169_spr">쇼쿠호 미사키(비무장)</div>
                 <div class="option-item" data-value="CH0227_spr">슈로</div>
@@ -362,8 +365,10 @@
                 <div class="option-item" data-value="NP0229_spr">아야메(황혼)_2</div>
                 <div class="option-item" data-value="CH0288_spr">아오바</div>
                 <div class="option-item" data-value="NP0032_spr">아오이</div>
+                <div class="option-item" data-value="NP0032_npc">아오이(총결산)</div>
                 <div class="option-item" data-value="NP0013_spr">아유무</div>
                 <div class="option-item" data-value="NP0099_spr">아유무(승무복)</div>
+                <div class="option-item" data-value="NP0013_quest">아유무(임무)</div>
                 <div class="option-item" data-value="airi_spr">아이리</div>
                 <div class="option-item" data-value="CH0251_spr">아이리(밴드)</div>
                 <div class="option-item" data-value="NP0189_spr">아이리(밴드)_2</div>
@@ -744,29 +749,19 @@
                 <div class="option-item" data-value="helmetdan_red1_spr">헬멧단(레드)</div>
                 <div class="option-item" data-value="helmetdan_black1_spr">헬멧단(블랙)</div>
                 <div class="option-item" data-value="" disabled>-------------------------------</div>
-                <div class="option-item" data-value="Rin_raiddungeon">린(총력전)</div>
-                <div class="option-item" data-value="Momoka_weekdungeon">모모카(던전)</div>
-                <div class="option-item" data-value="sora_shop">소라(상점)</div>
-                <div class="option-item" data-value="NP0032_npc">아오이(총결산)</div>
-                <div class="option-item" data-value="NP0013_quest">아유무(임무)</div>
-                <div class="option-item" data-value="arona_workpage">태블릿</div>
-                <div class="option-item" data-value="arona_workpage_daytime">태블릿(최종장 후 낮)</div>
-                <div class="option-item" data-value="arona_workpage_nighttime">태블릿(최종장 후 밤)</div>
             </div>
         </div>
 
         <button onclick="toggleFullscreen()" style="height: 35px; font-size: 15px">
             전체화면
         </button>
+        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
         <div class="anim-container-wrapper">
             <div class="slider-header" style="margin-bottom: 10px;">
                 <span>애니메이션 목록</span>
             </div>
             <div id="animation-list"></div>
         </div>
-
-        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
-        <button id="record-btn" onclick="startAutoRecording()" style="background-color: #e74c3c; height: 35px; font-size: 15px">녹화</button>
     </div>
 
     <div id="player-container"></div>
@@ -776,6 +771,65 @@
     <script>
         let player = null;
         let selectedCharacter = "CH0222_spr";
+        const isMobile = window.matchMedia("(pointer: coarse)").matches;
+
+        function enableCanvasDrag() {
+            const container = document.getElementById("player-container");
+            let dragging = false;
+            let startX = 0, startY = 0;
+            let offsetX = 0, offsetY = 0;
+
+            container.addEventListener("mousedown", e => {
+                dragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                container.style.cursor = "grabbing";
+            });
+
+            window.addEventListener("mousemove", e => {
+                if (!dragging) return;
+
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+
+                container.style.transform =
+                `translate(${offsetX + dx}px, ${offsetY + dy}px)`;
+            });
+
+            window.addEventListener("mouseup", () => {
+                if (!dragging) return;
+                dragging = false;
+
+                const transform = container.style.transform;
+                const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+
+                if (match) {
+                offsetX = parseFloat(match[1]);
+                offsetY = parseFloat(match[2]);
+                }
+
+                container.style.cursor = "grab";
+            });
+            }
+        enableCanvasDrag();
+
+        function enableCanvasWheelScale(p) {
+            let scale = 0.5;
+
+            const container = document.getElementById("player-container");
+
+            container.addEventListener("wheel", e => {
+                e.preventDefault();
+
+                const canvases = container.querySelectorAll("canvas");
+                if (!canvases.length) return;
+
+                scale += (e.deltaY < 0 ? 0.02 : -0.02);
+                scale = Math.min(Math.max(scale, 0.1), 2.0);
+
+                p.canvas.style.transform = `scale(${scale})`;
+            }, { passive: false });
+        }
 
         function buildAnimationList(player) {
             const list = document.getElementById("animation-list");
@@ -818,15 +872,10 @@
                         if (animNames.includes(animA)) {
                             player.animationState.setAnimation(2, animA, true);
                         }
-                    } else {
-                        if (name === "Idle_01") {
-                            player.animationState.setAnimation(0, "Idle_01", true);
-                            player.animationState.setEmptyAnimation(1, 0.2);
-                            player.animationState.setEmptyAnimation(2, 0.2);
-                        } else {
-                            player.animationState.setAnimation(1, name, true);
-                            player.animationState.setEmptyAnimation(2, 0.2);
-                        }
+                    }
+                    else {
+                        player.animationState.setAnimation(1, name, true);
+                        player.animationState.setEmptyAnimation(2, 0.2);
                     }
                 };
                 list.appendChild(btn);
@@ -900,68 +949,6 @@
             });
         });
 
-        async function startAutoRecording() {
-            const canvas = document.querySelector('#player-container canvas');
-            const recordBtn = document.getElementById('record-btn');
-            
-            if (!player || !canvas) return;
-
-            if (player.skeleton) {
-                player.skeleton.premultipliedAlpha = false; 
-            }
-
-            const originalBg = player.config.backgroundColor;
-            player.config.backgroundColor = "#000000FF"; 
-
-            const state = player.animationState;
-            const track = state.getCurrent(0);
-            if (!track) return;
-            track.trackTime = 0;
-            player.play();
-
-            const stream = canvas.captureStream(60);
-            const options = { 
-                mimeType: 'video/webm; codecs=vp9',
-                videoBitsPerSecond: 30 * 1024 * 1024
-            };
-            
-            let recordedChunks = [];
-            const mediaRecorder = new MediaRecorder(stream, options);
-
-            mediaRecorder.ondataavailable = (e) => {
-                if (e.data.size > 0) recordedChunks.push(e.data);
-            };
-
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `spine_no_pma_${Date.now()}.webm`;
-                a.click();
-                
-                player.config.backgroundColor = originalBg;
-
-                if (recordBtn) {
-                    recordBtn.disabled = false;
-                    recordBtn.innerText = "녹화";
-                }
-            };
-
-            mediaRecorder.start();
-            if (recordBtn) {
-                recordBtn.disabled = true;
-                recordBtn.innerText = "🔴 녹화 중...";
-            }
-
-            const animationDuration = track.animation.duration;
-            setTimeout(() => {
-                if (mediaRecorder && mediaRecorder.state === "recording") {
-                    mediaRecorder.stop();
-                }
-            }, (animationDuration * 1000) + 200);
-        }
-
         async function takeScreenshot() {
             const canvas = document.querySelector('#player-container canvas');
             if (!player || !canvas) return;
@@ -1020,6 +1007,7 @@
         }
 
         function loadSpine() {
+
             const container = document.getElementById('player-container');
             container.innerHTML = '';
 
@@ -1036,7 +1024,16 @@
                     padLeft: "1%", padRight: "1%", padTop: "1%", padBottom: "1%"
                 },
                 success: function(p) {
+                    enableCanvasWheelScale(p);
                     p.animationState.setAnimation(0, "Idle_01", true);
+                    if(!isMobile){
+                        p.canvas.style.transformOrigin = "center center";
+                        p.canvas.style.width = "200% !important";
+                        p.canvas.style.height = "200% !important";
+                        p.canvas.style.left = "-50%";
+                        p.canvas.style.top = "-50%";
+                        p.canvas.style.transform = "scale(0.5);";
+                    }
                     buildAnimationList(player);
                 }
             });
