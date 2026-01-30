@@ -50,6 +50,7 @@
         }
 
         #player-container canvas {
+            position: absolute;
             width: 200% !important;
             height: 200% !important;
             transform: scale(0.5);
@@ -773,6 +774,7 @@
     <script>
         let player = null;
         let selectedCharacter = "CH0222_spr";
+        const isMobile = window.matchMedia("(pointer: coarse)").matches;
 
         function enableCanvasDrag() {
             const container = document.getElementById("player-container");
@@ -814,7 +816,7 @@
             }
         enableCanvasDrag();
 
-        function enableCanvasWheelScale() {
+        function enableCanvasWheelScale(p) {
         let scale = 0.5;
 
         const container = document.getElementById("player-container");
@@ -828,10 +830,7 @@
             scale += (e.deltaY < 0 ? 0.02 : -0.02);
             scale = Math.min(Math.max(scale, 0.1), 2.0);
 
-            canvases.forEach(canvas => {
-            canvas.style.transformOrigin = "top left";
-            canvas.style.transform = `scale(${scale})`;
-            });
+            p.canvas.style.transform = `scale(${scale})`;
         }, { passive: false });
         }
 
@@ -1021,6 +1020,7 @@
         }
 
         function loadSpine() {
+
             const container = document.getElementById('player-container');
             container.innerHTML = '';
 
@@ -1037,12 +1037,20 @@
                     padLeft: "1%", padRight: "1%", padTop: "1%", padBottom: "1%"
                 },
                 success: function(p) {
-                    enableCanvasWheelScale();
+                    enableCanvasWheelScale(p);
                     if(selectedCharacter!=="arona_workpage"&&selectedCharacter!=="arona_workpage_daytime"&&selectedCharacter!=="arona_workpage_nighttime"){
                         p.animationState.setAnimation(0, "Idle_01", true);
                     }
                     else{
                         p.animationState.setAnimation(0, "Idle_background_00", true);
+                    }
+                    if(!isMobile){
+                        p.canvas.style.transformOrigin = "center center";
+                        p.canvas.style.width = "200% !important";
+                        p.canvas.style.height = "200% !important";
+                        p.canvas.style.left = "-50%";
+                        p.canvas.style.top = "-50%";
+                        p.canvas.style.transform = "scale(0.5);";
                     }
                     buildAnimationList(player);
                 }
