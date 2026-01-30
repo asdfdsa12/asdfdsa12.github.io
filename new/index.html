@@ -811,7 +811,6 @@
 
                 container.style.cursor = "grab";
             });
-
             }
         enableCanvasDrag();
 
@@ -1034,7 +1033,9 @@
                 },
                 success: function(p) {
                     enableCanvasWheelScale();
-                    p.animationState.setAnimation(0, "Idle_01", true);
+                    if(selectedCharacter!=="arona_workpage"&&selectedCharacter!=="arona_workpage_daytime"&&selectedCharacter!=="arona_workpage_nighttime"){
+                        p.animationState.setAnimation(0, "Idle_01", true);
+                    }
                     buildAnimationList(player);
                 }
             });
