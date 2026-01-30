@@ -748,7 +748,6 @@
                 <div class="option-item" data-value="NP0096_spr">프레지던트</div>
                 <div class="option-item" data-value="helmetdan_red1_spr">헬멧단(레드)</div>
                 <div class="option-item" data-value="helmetdan_black1_spr">헬멧단(블랙)</div>
-                <div class="option-item" data-value="" disabled>-------------------------------</div>
             </div>
         </div>
 
@@ -814,7 +813,6 @@
         enableCanvasDrag();
 
         function enableCanvasWheelScale(p) {
-<<<<<<< HEAD
             let scale = 0.5;
 
             const container = document.getElementById("player-container");
@@ -830,23 +828,6 @@
 
                 p.canvas.style.transform = `scale(${scale})`;
             }, { passive: false });
-=======
-        let scale = 0.5;
-
-        const container = document.getElementById("player-container");
-
-        container.addEventListener("wheel", e => {
-            e.preventDefault();
-
-            const canvases = container.querySelectorAll("canvas");
-            if (!canvases.length) return;
-
-            scale += (e.deltaY < 0 ? 0.02 : -0.02);
-            scale = Math.min(Math.max(scale, 0.1), 2.0);
-
-            p.canvas.style.transform = `scale(${scale})`;
-        }, { passive: false });
->>>>>>> 2530cdf992579b9139f9873ac7547bb9d43df3a0
         }
 
         function buildAnimationList(player) {
@@ -890,27 +871,10 @@
                         if (animNames.includes(animA)) {
                             player.animationState.setAnimation(2, animA, true);
                         }
-<<<<<<< HEAD
                     }
                     else {
                         player.animationState.setAnimation(1, name, true);
                         player.animationState.setEmptyAnimation(2, 0.2);
-=======
-                    } else {
-                        if(selectedCharacter!=="arona_workpage"&&selectedCharacter!=="arona_workpage_daytime"&&selectedCharacter!=="arona_workpage_nighttime"){
-                            if (name === "Idle_01") {
-                                player.animationState.setAnimation(0, "Idle_01", true);
-                                player.animationState.setEmptyAnimation(1, 0.2);
-                                player.animationState.setEmptyAnimation(2, 0.2);
-                            } else {
-                                player.animationState.setAnimation(1, name, true);
-                                player.animationState.setEmptyAnimation(2, 0.2);
-                            }}
-                        else{
-                            player.animationState.setAnimation(1, name, true);
-                            player.animationState.setEmptyAnimation(2, 0.2);
-                        }
->>>>>>> 2530cdf992579b9139f9873ac7547bb9d43df3a0
                     }
                 };
                 list.appendChild(btn);
@@ -1060,16 +1024,7 @@
                 },
                 success: function(p) {
                     enableCanvasWheelScale(p);
-<<<<<<< HEAD
                     p.animationState.setAnimation(0, "Idle_01", true);
-=======
-                    if(selectedCharacter!=="arona_workpage"&&selectedCharacter!=="arona_workpage_daytime"&&selectedCharacter!=="arona_workpage_nighttime"){
-                        p.animationState.setAnimation(0, "Idle_01", true);
-                    }
-                    else{
-                        p.animationState.setAnimation(0, "Idle_background_00", true);
-                    }
->>>>>>> 2530cdf992579b9139f9873ac7547bb9d43df3a0
                     if(!isMobile){
                         p.canvas.style.transformOrigin = "center center";
                         p.canvas.style.width = "200% !important";
