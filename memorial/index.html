@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>BA Spine Viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
+    <link rel="icon" href="favicon.ico">
+    <style>
+        body { background: #1a1a1a; color: #eee; font-family: sans-serif; margin: 0; overflow: hidden; display: flex; }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100vh;
+            background: #252525;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 60px 20px 20px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            
+        }
+
+        #sidebar.open { left: 0; }
+
+        #menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        #player-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a1a1a;
+        }
+
+        #player-container canvas {
+            position: absolute;
+            width: 300% !important;
+            height: 200% !important;
+            transform: translate(-2111px, -477px) scale(0.5);
+            transform-origin: center center;
+        }
+
+        @media screen and (max-width: 768px) {
+            #player-container canvas {
+                transform: scale(0.5); 
+                transform-origin: top left;
+            }
+        }
+
+        .search-container { position: relative; width: 100%; }
+        #charSearch { 
+            width: 100%; padding: 12px; border-radius: 4px; background: #444; 
+            color: white; border: 1px solid #666; outline: none; box-sizing: border-box;
+        }
+        .options-list { 
+            position: absolute; top: 50px; left: 0; width: 100%; max-height: 400px; 
+            background: #333; border: 1px solid #555; border-radius: 4px; 
+            overflow-y: auto; z-index: 1100; display: none;
+        }
+        .options-list.show { display: block; }
+        .option-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #444; font-size: 14px; }
+        .option-item:hover { background: #2b6cb0; }
+        .option-item.hidden { display: none; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        button.action-btn { padding: 12px; border-radius: 4px; border: none; cursor: pointer; color: white; background: #555; font-weight: bold; width: 100%; }
+        button.action-btn:hover { background: #666; }
+        
+        .anim-container-wrapper {
+            background: #333;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            margin-top: 10px;
+        }
+
+        #animation-list {
+            max-height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        #animation-list::-webkit-scrollbar { width: 6px; }
+        #animation-list::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+
+        #animation-list button {
+            width: 100%;
+            min-height: 45px; 
+            padding: 0 15px;
+            
+            background: #444;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+            cursor: pointer;
+            
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1;
+            
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.2s;
+        }
+
+        #animation-list button:hover {
+            background: #3a3a3a;
+            border-color: #2b6cb0;
+        }
+
+        #animation-list button.active {
+            background: #2b6cb0;
+            border-color: #63b3ed;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="menu-toggle" onclick="toggleSidebar()">☰ 메뉴 열기</button>
+    <div id="sidebar">
+        <label>캐릭터 검색: </label>
+
+        <div class="search-container">
+            <input type="text" id="charSearch" placeholder="이름 입력..." autocomplete="off">
+            <div id="options-list" class="options-list">
+                <div class="option-item" data-value="CH0222_home">나구사</div>
+                <div class="option-item" data-value="Nagisa_home">나기사</div>
+                <div class="option-item" data-value="CH0293_home">나기사(수영복)</div>
+                <div class="option-item" data-value="CH0155_home">나츠</div>
+                <div class="option-item" data-value="CH0221_home">나츠(밴드)</div>
+                <div class="option-item" data-value="Neru_home">네루</div>
+                <div class="option-item" data-value="CH0280_home">네루(교복)</div>
+                <div class="option-item" data-value="CH0101_home">네루(바니걸)</div>
+                <div class="option-item" data-value="Nonomi_home">노노미</div>
+                <div class="option-item" data-value="LobbyNonomi_multi">노노미_특전</div>
+                <div class="option-item" data-value="CH0092_home">노노미(수영복)</div>
+                <div class="option-item" data-value="Nodoka_home">노도카</div>
+                <div class="option-item" data-value="CH0165_home">노도카(온천)</div>
+                <div class="option-item" data-value="CH0095_home">노아</div>
+                <div class="option-item" data-value="CH0285_home">노아(파자마)</div>
+                <div class="option-item" data-value="CH0243_home">노조미</div>
+                <div class="option-item" data-value="CH0109_home">니야</div>
+                <div class="option-item" data-value="CH0166_home">라브</div>
+                <div class="option-item" data-value="CH0245_home">레이</div>
+                <div class="option-item" data-value="CH0167_home">레이사</div>
+                <div class="option-item" data-value="CH0326_home">레이사(매지컬)</div>
+                <div class="option-item" data-value="reizyo_home">레이죠</div>
+                <div class="option-item" data-value="CH0224_home">렌게</div>
+                <div class="option-item" data-value="CH0302_home">렌게(수영복)</div>
+                <div class="option-item" data-value="CH0135_home">루미</div>
+                <div class="option-item" data-value="CH0158_home">리오</div>
+                <div class="option-item" data-value="CH0331_home">리오(무장)</div>
+                <div class="option-item" data-value="CH0319_home">리츠</div>
+                <div class="option-item" data-value="mari_home">마리</div>
+                <div class="option-item" data-value="CH0186_home">마리(체육복)</div>
+                <div class="option-item" data-value="CH0273_home">마리(아이돌)</div>
+                <div class="option-item" data-value="Marina_home">마리나</div>
+                <div class="option-item" data-value="CH0270_home">마리나(치파오)</div>
+                <div class="option-item" data-value="Mashiro_home">마시로</div>
+                <div class="option-item" data-value="Mashiro_swimsuit_home">마시로(수영복)</div>
+                <div class="option-item" data-value="CH0079_home">마코토</div>
+                <div class="option-item" data-value="Maki_home">마키</div>
+                <div class="option-item" data-value="CH0235_home">마키(캠핑)</div>
+                <div class="option-item" data-value="CH0088_home">메구</div>
+                <div class="option-item" data-value="CH0124_home">메루</div>
+                <div class="option-item" data-value="Momoi_home">모모이</div>
+                <div class="option-item" data-value="Momoi_Scene">모모이_장면</div>
+                <div class="option-item" data-value="CH0201_home">모모이(메이드)</div>
+                <div class="option-item" data-value="momiji_home">모미지</div>
+                <div class="option-item" data-value="Moe_home">모에</div>
+                <div class="option-item" data-value="CH0216_home">모에(수영복)</div>
+                <div class="option-item" data-value="Mutsuki_home">무츠키</div>
+                <div class="option-item" data-value="mutsuki_newyear_home">무츠키(새해)</div>
+                <div class="option-item" data-value="CH0138_home">미나</div>
+                <div class="option-item" data-value="CH0152_home">미네</div>
+                <div class="option-item" data-value="CH0275_home">미네(아이돌)</div>
+                <div class="option-item" data-value="CH0214_home">미노리</div>
+                <div class="option-item" data-value="Midori_home">미도리</div>
+                <div class="option-item" data-value="CH0202_home">미도리(메이드)</div>
+                <div class="option-item" data-value="Mimori_home">미모리</div>
+                <div class="option-item" data-value="CH0183_home">미모리(수영복)</div>
+                <div class="option-item" data-value="CH9998_home">미사카 미코토</div>
+                <div class="option-item" data-value="Misaki_home">미사키</div>
+                <div class="option-item" data-value="CH0268_home">미사키(수영복)</div>
+                <div class="option-item" data-value="Miyako_home">미야코</div>
+                <div class="option-item" data-value="CH0215_home">미야코(수영복)</div>
+                <div class="option-item" data-value="CH0145_home">미유</div>
+                <div class="option-item" data-value="CH0218_home">미유(수영복)</div>
+                <div class="option-item" data-value="CH0317_home">미요</div>
+                <div class="option-item" data-value="CH0113_home">미치루</div>
+                <div class="option-item" data-value="CH0296_home">미치루(드레스)</div>
+                <div class="option-item" data-value="CH0069_home">미카</div>
+                <div class="option-item" data-value="CH0294_home">미카(수영복)</div>
+                <div class="option-item" data-value="Saya_home">사야</div>
+                <div class="option-item" data-value="Saya_casual_home">사야(사복)</div>
+                <div class="option-item" data-value="Saori_home">사오리</div>
+                <div class="option-item" data-value="CH0259_home">사오리(드레스)</div>
+                <div class="option-item" data-value="CH0266_home">사오리(수영복)</div>
+                <div class="option-item" data-value="CH0080_home">사츠키</div>
+                <div class="option-item" data-value="Sakurako_home">사쿠라코</div>
+                <div class="option-item" data-value="CH0274_home">사쿠라코(아이돌)</div>
+                <div class="option-item" data-value="CH0144_home">사키</div>
+                <div class="option-item" data-value="CH0217_home">사키(수영복)</div>
+                <div class="option-item" data-value="CH9996_home">사텐 루이코</div>
+                <div class="option-item" data-value="CH0081_home">세나</div>
+                <div class="option-item" data-value="CH0082_home">세나(사복)</div>
+                <div class="option-item" data-value="serina_home">세리나</div>
+                <div class="option-item" data-value="CH0194_home">세리나(크리스마스)</div>
+                <div class="option-item" data-value="Serika_home">세리카</div>
+                <div class="option-item" data-value="LobbySerika_multi">세리카_특전</div>
+                <div class="option-item" data-value="Serika_newyear_home">세리카(새해)</div>
+                <div class="option-item" data-value="CH0189_home">세리카(수영복)</div>
+                <div class="option-item" data-value="CH0070_home">세이아</div>
+                <div class="option-item" data-value="CH0295_home">세이아(수영복)</div>
+                <div class="option-item" data-value="CH9997_home">쇼쿠호 미사키</div>
+                <div class="option-item" data-value="Shun_home">슌</div>
+                <div class="option-item" data-value="CH0066_home">슌(어린이)</div>
+                <div class="option-item" data-value="Sumire_home">스미레</div>
+                <div class="option-item" data-value="CH0287_home">스미레(아르바이트)</div>
+                <div class="option-item" data-value="CH0309_home">스바루</div>
+                <div class="option-item" data-value="Suzumi_home">스즈미</div>
+                <div class="option-item" data-value="CH0325_home">스즈미(매지컬)</div>
+                <div class="option-item" data-value="Shigure_home">시구레</div>
+                <div class="option-item" data-value="CH0123_home">시구레(온천)</div>
+                <div class="option-item" data-value="Shiroko_home">시로코</div>
+                <div class="option-item" data-value="LobbyShiroko_multi">시로코_특전</div>
+                <div class="option-item" data-value="Shiroko_ridingsuit_home">시로코(라이딩)</div>
+                <div class="option-item" data-value="CH0188_home">시로코(수영복)</div>
+                <div class="option-item" data-value="CH0263_home">시로코*테러</div>
+                <div class="option-item" data-value="Shimiko_home">시미코</div>
+                <div class="option-item" data-value="Shizuko_home">시즈코</div>
+                <div class="option-item" data-value="CH0180_home">시즈코(수영복)</div>
+                <div class="option-item" data-value="Aru_home">아루</div>
+                <div class="option-item" data-value="Aru_scene">아루_장면</div>
+                <div class="option-item" data-value="Aru_newyear_home">아루(새해)</div>
+                <div class="option-item" data-value="CH0240_home">아루(드레스)</div>
+                <div class="option-item" data-value="Aris_home">아리스</div>
+                <div class="option-item" data-value="CH0200_home">아리스(메이드)</div>
+                <div class="option-item" data-value="CH0334_home">아리스(무장)</div>
+                <div class="option-item" data-value="Asuna_home">아스나</div>
+                <div class="option-item" data-value="CH0098_home">아스나(바니걸)</div>
+                <div class="option-item" data-value="CH0281_home">아스나(교복)</div>
+                <div class="option-item" data-value="Ayane_home">아야네</div>
+                <div class="option-item" data-value="LobbyAyane_multi">아야네_특전</div>
+                <div class="option-item" data-value="CH0176_home">아야네(수영복)</div>
+                <div class="option-item" data-value="CH0288_home">아오바</div>
+                <div class="option-item" data-value="Airi_home">아이리</div>
+                <div class="option-item" data-value="CH0251_home">아이리(밴드)</div>
+                <div class="option-item" data-value="Azusa_home">아즈사</div>
+                <div class="option-item" data-value="Azusa_swimsuit_home">아즈사(수영복)</div>
+                <div class="option-item" data-value="Atsuko_home">아츠코</div>
+                <div class="option-item" data-value="CH0267_home">아츠코(수영복)</div>
+                <div class="option-item" data-value="Akane_home">아카네</div>
+                <div class="option-item" data-value="CH0099_home">아카네(바니걸)</div>
+                <div class="option-item" data-value="akari_home">아카리</div>
+                <div class="option-item" data-value="akari_bg">아카리_배경</div>
+                <div class="option-item" data-value="akari_scene">아카리_장면</div>
+                <div class="option-item" data-value="CH0196_home">아카리(새해)</div>
+                <div class="option-item" data-value="Ako_home">아코</div>
+                <div class="option-item" data-value="CH0231_home">아코(드레스)</div>
+                <div class="option-item" data-value="CH0228_home">야쿠모</div>
+                <div class="option-item" data-value="CH0304_home">에리</div>
+                <div class="option-item" data-value="Eimi_home">에이미</div>
+                <div class="option-item" data-value="CH0219_home">에이미(수영복)</div>
+                <div class="option-item" data-value="Yoshimi_home">요시미</div>
+                <div class="option-item" data-value="CH0220_home">요시미(밴드)</div>
+                <div class="option-item" data-value="Wakamo_home">와카모</div>
+                <div class="option-item" data-value="Wakamo_Scene_0">와카모_장면</div>
+                <div class="option-item" data-value="CH0175_home">와카모(수영복)</div>
+                <div class="option-item" data-value="CH0110_home">우미카</div>
+                <div class="option-item" data-value="CH0169_home">우이</div>
+                <div class="option-item" data-value="CH0204_home">우이(수영복)</div>
+                <div class="option-item" data-value="Utaha_home">우타하</div>
+                <div class="option-item" data-value="CH0182_home">우타하(응원단)</div>
+                <div class="option-item" data-value="Yuuka_home">유우카</div>
+                <div class="option-item" data-value="CH0184_home">유우카(체육복)</div>
+                <div class="option-item" data-value="CH0284_home">유우카(파자마)</div>
+                <div class="option-item" data-value="Yuzu_home">유즈</div>
+                <div class="option-item" data-value="yuzu_bg">유즈_배경</div>
+                <div class="option-item" data-value="CH0203_home">유즈(메이드)</div>
+                <div class="option-item" data-value="CH0161_home">유카리</div>
+                <div class="option-item" data-value="CH0301_home">유카리(수영복)</div>
+                <div class="option-item" data-value="CH0156_home">이로하</div>
+                <div class="option-item" data-value="Ibuki_home">이부키</div>
+                <div class="option-item" data-value="Iori_home">이오리</div>
+                <div class="option-item" data-value="CH0064_home">이오리(수영복)</div>
+                <div class="option-item" data-value="Izuna_home">이즈나</div>
+                <div class="option-item" data-value="CH0179_home">이즈나(수영복)</div>
+                <div class="option-item" data-value="Izumi_home">이즈미</div>
+                <div class="option-item" data-value="Izumi_swimsuit_home">이즈미(수영복)</div>
+                <div class="option-item" data-value="CH0197_home">이즈미(새해)</div>
+                <div class="option-item" data-value="CH0071_home">이치카</div>
+                <div class="option-item" data-value="CH0292_home">이치카(수영복)</div>
+                <div class="option-item" data-value="Juri_home">주리</div>
+                <div class="option-item" data-value="CH0286_home">주리(아르바이트)</div>
+                <div class="option-item" data-value="Zunko_home">준코</div>
+                <div class="option-item" data-value="CH0192_home">준코(새해)</div>
+                <div class="option-item" data-value="Cherino_home">체리노</div>
+                <div class="option-item" data-value="CH0164_home">체리노(온천)</div>
+                <div class="option-item" data-value="Tsurugi_home">츠루기</div>
+                <div class="option-item" data-value="CH0060_home">츠루기(수영복)</div>
+                <div class="option-item" data-value="CH0060BG_home">츠루기(수영복)_배경</div>
+                <div class="option-item" data-value="Tsubaki_home">츠바키</div>
+                <div class="option-item" data-value="CH0255_home">츠바키(가이드)</div>
+                <div class="option-item" data-value="CH0114_home">츠쿠요</div>
+                <div class="option-item" data-value="CH0297_home">츠쿠요(드레스)</div>
+                <div class="option-item" data-value="Chinatsu_home">치나츠</div>
+                <div class="option-item" data-value="CH0163_home">치나츠(온천)</div>
+                <div class="option-item" data-value="Chise_home">치세</div>
+                <div class="option-item" data-value="CH0178_home">치세(수영복)</div>
+                <div class="option-item" data-value="CH0238_home">치아키</div>
+                <div class="option-item" data-value="CH0160_home">치히로</div>
+                <div class="option-item" data-value="CH0306_home">카노에</div>
+                <div class="option-item" data-value="Karin_home">카린</div>
+                <div class="option-item" data-value="CH0282_home">카린(교복)</div>
+                <div class="option-item" data-value="CH0100_home">카린(바니걸)</div>
+                <div class="option-item" data-value="CH0089_home">카스미</div>
+                <div class="option-item" data-value="Kaede_home">카에데</div>
+                <div class="option-item" data-value="Kayoko_home">카요코</div>
+                <div class="option-item" data-value="CH0239_home">카요코(드레스)</div>
+                <div class="option-item" data-value="CH0086_home">카요코(새해)</div>
+                <div class="option-item" data-value="kazusa_home">카즈사</div>
+                <div class="option-item" data-value="CH0250_home">카즈사(밴드)</div>
+                <div class="option-item" data-value="CH0107_home">카호</div>
+                <div class="option-item" data-value="CH0170_home">칸나</div>
+                <div class="option-item" data-value="CH0260_home">칸나(수영복)</div>
+                <div class="option-item" data-value="CH0335_home">케이</div>
+                <div class="option-item" data-value="CH0198_home">코유키</div>
+                <div class="option-item" data-value="CH0137_home">코코나</div>
+                <div class="option-item" data-value="Kotori_home">코토리</div>
+                <div class="option-item" data-value="CH0185_home">코토리(응원단)</div>
+                <div class="option-item" data-value="Kotama_home">코타마</div>
+                <div class="option-item" data-value="CH0232_home">코타마(캠핑)</div>
+                <div class="option-item" data-value="Koharu_home">코하루</div>
+                <div class="option-item" data-value="CH0205_home">코하루(수영복)</div>
+                <div class="option-item" data-value="Kirara_home">키라라</div>
+                <div class="option-item" data-value="kirino_home">키리노</div>
+                <div class="option-item" data-value="CH0262_home">키리노(수영복)</div>
+                <div class="option-item" data-value="CH0139_home">키사키</div>
+                <div class="option-item" data-value="CH0225_home">키쿄</div>
+                <div class="option-item" data-value="CH0300_home">키쿄(수영복)</div>
+                <div class="option-item" data-value="CH0229_home">타카네</div>
+                <div class="option-item" data-value="Tomoe_home">토모에</div>
+                <div class="option-item" data-value="CH0271_home">토모에(치파오)</div>
+                <div class="option-item" data-value="CH0187_home">토키</div>
+                <div class="option-item" data-value="CH0333_home">토키(무장)</div>
+                <div class="option-item" data-value="CH0211_home">토키(바니걸)</div>
+                <div class="option-item" data-value="Pina_home">피나</div>
+                <div class="option-item" data-value="CH0257_home">피나(가이드)</div>
+                <div class="option-item" data-value="Hanako_home">하나코</div>
+                <div class="option-item" data-value="CH0209_home">하나코(수영복)</div>
+                <div class="option-item" data-value="Hanae_home">하나에</div>
+                <div class="option-item" data-value="CH0195_home">하나에(크리스마스)</div>
+                <div class="option-item" data-value="Hare_home">하레</div>
+                <div class="option-item" data-value="CH0233_home">하레(캠핑)</div>
+                <div class="option-item" data-value="Haruna_home">하루나</div>
+                <div class="option-item" data-value="CH0191_home">하루나(새해)</div>
+                <div class="option-item" data-value="CH0193_home">하루나(체육복)</div>
+                <div class="option-item" data-value="Haruka_home">하루카</div>
+                <div class="option-item" data-value="CH0087_home">하루카(새해)</div>
+                <div class="option-item" data-value="Hasumi_home">하스미</div>
+                <div class="option-item" data-value="CH0291_home">하스미(수영복)</div>
+                <div class="option-item" data-value="CH0190_home">하스미(체육복)</div>
+                <div class="option-item" data-value="CH9999_home">하츠네 미쿠</div>
+                <div class="option-item" data-value="CH0141_home">후부키</div>
+                <div class="option-item" data-value="CH0261_home">후부키(수영복)</div>
+                <div class="option-item" data-value="Hoshino_home">호시노</div>
+                <div class="option-item" data-value="Hoshino_home_background">호시노_배경</div>
+                <div class="option-item" data-value="LobbyHoshino_multi">호시노_특전</div>
+                <div class="option-item" data-value="CH0258_home">호시노(무장)</div>
+                <div class="option-item" data-value="Hoshino_swimsuit_home">호시노(수영복)</div>
+                <div class="option-item" data-value="Fuuka_home">후우카</div>
+                <div class="option-item" data-value="Fuuka_Scene">후우카_장면</div>
+                <div class="option-item" data-value="CH0177_home">후우카(새해)</div>
+                <div class="option-item" data-value="CH0318_home">후유</div>
+                <div class="option-item" data-value="Hina_home">히나</div>
+                <div class="option-item" data-value="CH0230_home">히나(드레스)</div>
+                <div class="option-item" data-value="CH0063_home">히나(수영복)</div>
+                <div class="option-item" data-value="Hinata_home">히나타</div>
+                <div class="option-item" data-value="CH0210_home">히나타(수영복)</div>
+                <div class="option-item" data-value="CH0159_home">히마리</div>
+                <div class="option-item" data-value="CH0332_home">히마리(무장)</div>
+                <div class="option-item" data-value="Hibiki_home">히비키</div>
+                <div class="option-item" data-value="CH0181_home">히비키(응원단)</div>
+                <div class="option-item" data-value="Hiyori_home">히요리</div>
+                <div class="option-item" data-value="CH0269_home">히요리(수영복)</div>
+                <div class="option-item" data-value="CH0242_home">히카리</div>
+                <div class="option-item" data-value="Hihumi_home">히후미</div>
+                <div class="option-item" data-value="CH0058_home">히후미(수영복)</div>
+                <div class="option-item" data-value="">------------스토리 컷씬---------------</div>
+                <div class="option-item" data-value="SC11000_01">Vol.1 1장 컷씬</div>
+                <div class="option-item" data-value="SC12000_01">Vol.1 2장 컷씬</div>
+                <div class="option-item" data-value="SC12000_02">Vol.1 2장 컷씬_2</div>
+                <div class="option-item" data-value="SC51000_01">Vol.5 1장 컷씬</div>
+                <div class="option-item" data-value="SC51000_02">Vol.5 1장 컷씬_2</div>
+                <div class="option-item" data-value="SC52000_01">Vol.5 2장 컷씬</div>
+                <div class="option-item" data-value="SC52000_02">Vol.5 2장 컷씬_2</div>
+                <div class="option-item" data-value="SC61000_01">Vol.6 1장 컷씬</div>
+                <div class="option-item" data-value="SC62000_01">Vol.6 2장 컷씬</div>
+                <div class="option-item" data-value="SC63000_01">Vol.6 3장 컷씬</div>
+                <div class="option-item" data-value="">------------기타------------</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_EN0010">공략전_게부라</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_EN0015">공략전_말쿠트</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_Binah">공략전_비나</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_EN0013">공략전_예소드</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_Kether">공략전_케테르</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_EN0011">공략전_티페레트</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_Chesed">공략전_헤세드</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_Hod">공략전_호드</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_EN0009">공략전_호크마</div>
+                <div class="option-item" data-value="Ui_IAWorldBoss_EN0012">공략전_호크마_2</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Goz">대결전_고즈</div>
+                <div class="option-item" data-value="Ui_RaidBoss_EN0005">대결전_그레고리오</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Binah">대결전_비나</div>
+                <div class="option-item" data-value="Ui_RaidBoss_ShiroKuro">대결전_시로쿠로</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Hieronymus">대결전_예로니무스</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Kaitenger">대결전_카이텐져</div>
+                <div class="option-item" data-value="Ui_RaidBoss_EN0006">대결전_쿠로카게</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Perorozilla">대결전_페로로지라</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Chesed">대결전_헤세드</div>
+                <div class="option-item" data-value="Ui_RaidBoss_Hod">대결전_호드</div>
+                <div class="option-item" data-value="Ui_RaidBoss_HoverCraft">대결전_호버크래프트</div>
+                <div class="option-item" data-value="arona_workpage">태블릿</div>
+                <div class="option-item" data-value="arona_workpage_daytime">태블릿(최종장 후 낮)</div>
+                <div class="option-item" data-value="arona_workpage_nighttime">태블릿(최종장 후 밤)</div>
+
+            </div>
+        </div>
+
+        <button onclick="takeScreenshot()" style="height: 35px; font-size: 15px">이미지 다운로드</button>
+        <div class="anim-container-wrapper">
+            <div class="slider-header" style="margin-bottom: 10px;">
+                <span>애니메이션 목록</span>
+            </div>
+            <div id="animation-list"></div>
+        </div>
+    </div>
+
+    <div id="player-container"></div>
+
+    <script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.js"></script>
+    
+    <script>
+        let player = null;
+        let selectedCharacter = "CH0222_home";
+
+        function enableCanvasDrag() {
+            const container = document.getElementById("player-container");
+            let dragging = false;
+            let startX = 0, startY = 0;
+            let offsetX = 0, offsetY = 0;
+
+            container.addEventListener("mousedown", e => {
+                dragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                container.style.cursor = "grabbing";
+            });
+
+            window.addEventListener("mousemove", e => {
+                if (!dragging) return;
+
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+
+                container.style.transform =
+                `translate(${offsetX + dx}px, ${offsetY + dy}px)`;
+            });
+
+            window.addEventListener("mouseup", () => {
+                if (!dragging) return;
+                dragging = false;
+
+                const transform = container.style.transform;
+                const match = transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+
+                if (match) {
+                offsetX = parseFloat(match[1]);
+                offsetY = parseFloat(match[2]);
+                }
+
+                container.style.cursor = "grab";
+            });
+            }
+        enableCanvasDrag();
+
+        function enableCanvasWheelScale(p) {
+            const container = document.getElementById("player-container");
+            const canvas = p.canvas;
+
+            let currentTransform = window.getComputedStyle(canvas).transform;
+            
+            let scale = 0.5;
+
+            container.onwheel = e => {
+                e.preventDefault();
+
+                scale += (e.deltaY < 0 ? 0.03 : -0.03);
+                scale = Math.min(Math.max(scale, 0.1), 3.0);
+
+                canvas.style.transform = `translate(-2111px, -477px) scale(${scale})`;
+            };
+        }
+
+        function buildAnimationList(player) {
+            const list = document.getElementById("animation-list");
+            list.innerHTML = "";
+
+            const animations = player.skeleton.data.animations;
+            const animNames = animations.map(a => a.name);
+            
+            const processedBases = new Set();
+
+            animations.forEach(anim => {
+                const name = anim.name;
+                
+                const match = name.match(/(.+?)(_[AM])/);
+                let displayName = name;
+                let isSet = false;
+                let baseName = name;
+
+                if (match) {
+                    baseName = match[1];
+                    displayName = baseName;
+                    isSet = true;
+                    
+                    if (processedBases.has(baseName)) return;
+                    processedBases.add(baseName);
+                }
+
+                const btn = document.createElement("button");
+                btn.textContent = displayName;
+
+                btn.onclick = () => {
+                    Array.from(list.children).forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    if (isSet) {
+                        const animM = baseName + "_M";
+                        const animA = baseName + "_A";
+
+                        player.animationState.setAnimation(1, animM, true);
+                        if (animNames.includes(animA)) {
+                            player.animationState.setAnimation(2, animA, true);
+                        }
+                    } else {
+                        if(selectedCharacter!=="arona_workpage"&&selectedCharacter!=="arona_workpage_daytime"&&selectedCharacter!=="arona_workpage_nighttime"){
+                            if (name == "Idle_01") {
+                                player.animationState.setAnimation(0, "Idle_01", true);
+                                player.animationState.setEmptyAnimation(1, 0.2);
+                                player.animationState.setEmptyAnimation(2, 0.2);
+                            } else {
+                                player.animationState.setAnimation(1, name, true);
+                                player.animationState.setEmptyAnimation(2, 0.2);
+                            }}
+                        else{
+                            player.animationState.setAnimation(1, name, true);
+                            player.animationState.setEmptyAnimation(2, 0.2);
+                        }
+                    }
+                };
+                list.appendChild(btn);
+            });
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('menu-toggle');
+            sidebar.classList.toggle('open');
+            toggleBtn.innerText = sidebar.classList.contains('open') ? "✕ 닫기" : "☰ 메뉴 열기";
+        }
+
+        const searchInput = document.getElementById('charSearch');
+        const optionsList = document.getElementById('options-list');
+        const optionItems = document.querySelectorAll('.option-item');
+
+        searchInput.addEventListener('click', () => {
+            optionsList.classList.add('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                optionsList.classList.remove('show');
+            }
+        });
+
+        searchInput.addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            optionsList.classList.add('show');
+            
+            optionItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+
+        optionItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const val = this.getAttribute('data-value');
+                const name = this.textContent;
+                
+                selectedCharacter = val;
+                searchInput.value = name;
+                optionsList.classList.remove('show');
+                
+                loadSpine();
+            });
+        });
+
+        async function takeScreenshot() {
+            const canvas = document.querySelector('#player-container canvas');
+            if (!player || !canvas) return;
+
+            const gl = canvas.getContext("webgl2", { preserveDrawingBuffer: true }) || 
+                    canvas.getContext("webgl", { preserveDrawingBuffer: true });
+            
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            const pixels = new Uint8Array(width * height * 4);
+            
+            gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+
+            let minX = width, minY = height, maxX = 0, maxY = 0;
+            let found = false;
+
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const index = (y * width + x) * 4;
+                    const alpha = pixels[index + 3];
+                    if (alpha > 5) {
+                        if (x < minX) minX = x;
+                        if (x > maxX) maxX = x;
+                        if (y < minY) minY = y;
+                        if (y > maxY) maxY = y;
+                        found = true;
+                    }
+                }
+            }
+
+            if (!found) {
+                alert("이미지를 감지할 수 없습니다.");
+                return;
+            }
+
+            const padding = 5;
+            const cropWidth = (maxX - minX) + (padding * 2);
+            const cropHeight = (maxY - minY) + (padding * 2);
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = cropWidth;
+            tempCanvas.height = cropHeight;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            tempCtx.drawImage(
+                canvas,
+                minX - padding, height - maxY - padding, cropWidth, cropHeight,
+                0, 0, cropWidth, cropHeight
+            );
+
+            const link = document.createElement('a');
+            link.download = `memorial_character_${Date.now()}.png`;
+            link.href = tempCanvas.toDataURL("image/png");
+            link.click();
+        }
+
+        function loadSpine() {
+            const container = document.getElementById('player-container');
+            container.innerHTML = '';
+
+            player = new spine.SpinePlayer("player-container", {
+                skelUrl: `assets/${selectedCharacter}.skel`, 
+                atlasUrl: `assets/${selectedCharacter}.atlas`,
+                showControls: false,
+                premultipliedAlpha: false,
+                backgroundColor: "#00000000",
+                alpha: true,
+                preserveDrawingBuffer: true,
+                viewport: {
+                    padLeft: "-8%", padRight: "-8%", padTop: "-8%", padBottom: "-8%"
+                },
+                success: function(p) {
+                    const anims = p.skeleton.data;
+                    enableCanvasWheelScale(p);
+                    if(selectedCharacter!=="arona_workpage"&&selectedCharacter!=="arona_workpage_daytime"&&selectedCharacter!=="arona_workpage_nighttime"){
+                        p.animationState.setAnimation(0, "Idle_01", true);
+                    }
+                    else{
+                        p.animationState.setAnimation(0, "Idle_background_00", true);
+                    }
+                    const allAnimations = p.skeleton.data.animations;
+                    let trackIndex = 10;
+                    allAnimations.forEach(anim => {
+                    if (anim.name.endsWith("_R")&&anim.name!=="Idle_01_R"&&anim.name!=="Idle_Light_01_R"&&anim.name!=="Dev/Dev_Idle_01_R") {
+                        p.animationState.setAnimation(trackIndex, anim.name, true);
+                        trackIndex++;
+                    }
+                });
+                    buildAnimationList(p);
+                }
+            });
+        }
+
+        window.onload = loadSpine;
+    </script>
+</body>
+</html>
